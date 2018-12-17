@@ -1,0 +1,24 @@
+{
+  "name": "mlaudioprinter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "onoff": "^3.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaelleChenaux/mlaudioprinter.git"
+  },
+  "author": "maelle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaelleChenaux/mlaudioprinter/issues"
+  },
+  "homepage": "https://github.com/MaelleChenaux/mlaudioprinter#readme"
+}
