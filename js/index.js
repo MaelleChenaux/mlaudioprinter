@@ -25,7 +25,8 @@ function collect(label) {
     }
   );
 }
-
+/////
+/////
 function normalize(x) {
   const mean = -100;
   const std = 10;
