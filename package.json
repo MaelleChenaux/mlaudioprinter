@@ -4,6 +4,8 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "@tensorflow-models/speech-commands": "^0.2.2",
+    "@tensorflow/tfjs": "^0.14.1",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "onoff": "^3.2.2"
