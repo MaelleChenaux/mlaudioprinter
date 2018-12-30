@@ -134,15 +134,15 @@ async function moveSlider(labelTensor) {
   const label = (await labelTensor.data())[0];
   document.getElementById("console").textContent = label;
   if (label == 0 && prevLabel != 0) {
-    getJoke();
+    // getJoke();
     return;
   }
   if (label == 1 && prevLabel != 1) {
-    getWord();
+    // getWord();
     return;
   }
   if (label == 2 && prevLabel != 2) {
-    getNews();
+    // getNews();
     return;
   }
   let delta = 0.1;
@@ -180,7 +180,12 @@ function listen() {
     }
   );
 }
-function getJoke() {
+
+
+/////REQUEST APIS
+
+
+/*function getJoke() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -220,3 +225,4 @@ function getWord() {
   );
   xhttp.send();
 }
+*/
