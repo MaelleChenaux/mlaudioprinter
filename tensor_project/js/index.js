@@ -1,5 +1,4 @@
 let recognizer;
-
 const NUM_FRAMES = 3;
 let examples = [];
 
