@@ -158,20 +158,22 @@ async function moveSlider(labelTensor) {
   document.getElementById("console").textContent = label;
   if (label != prevLabel) {
     counterLabel = 0;
-    console.log("send label")
+    // console.log("send label")
   }
   if (label == prevLabel) {
     counterLabel++;
     console.log("counterlabel " + counterLabel)
 
-    if (counterLabel > 10) {
+    // tibor
+    if (counterLabel > 20) {
       console.log("Sending data");
       sendData({'label': label});
+      counterLabel = 0;
     }
   }
 
   if (label == 0 && prevLabel != 0) {
-    // getJoke();
+    getJoke();
     return;
   }
   if (label == 1 && prevLabel != 1) {
@@ -228,7 +230,7 @@ function listen() {
 /////REQUEST APIS
 
 
-/*function getJoke() {
+function getJoke() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -238,7 +240,8 @@ function listen() {
   xhttp.open("GET", "https://geek-jokes.sameerkumar.website/api", true);
   xhttp.send();
 }
-function getNews() {
+
+/*function getNews() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
