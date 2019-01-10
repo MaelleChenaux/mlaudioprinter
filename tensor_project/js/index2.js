@@ -1,5 +1,5 @@
 let recognizer;
-const NUM_FRAMES = 3;
+const NUM_FRAMES = 4;
 let examples = [];
 
 function collect(label) {
@@ -81,7 +81,7 @@ function buildModel() {
   model.add(
     tf.layers.depthwiseConv2d({
       depthMultiplier: 8,
-      kernelSize: [NUM_FRAMES, 3],
+      kernelSize: [NUM_FRAMES, 4],
       activation: "relu",
       inputShape: INPUT_SHAPE
     })
@@ -144,6 +144,10 @@ async function moveSlider(labelTensor) {
     // getNews();
     return;
   }
+  if (label == 3&& prevLabel != 3) {
+    // getNews();
+    return;
+  }
   let delta = 0.1;
   const prevValue = +document.getElementById("output").value;
   document.getElementById("output").value =
@@ -203,7 +207,7 @@ function getNews() {
   };
   xhttp.open(
     "GET",
-    "https://newsapi.org/v2/top-headlines?country=ch&apiKey=eb40180347c54e3a9ba51a1327ab80d8z",
+    "https://newsapi.org/v2/top-headlines?country=ch&apiKey=eb40180347c54e3a9ba51a1327ab80d8",
     true
   );
   xhttp.send();
