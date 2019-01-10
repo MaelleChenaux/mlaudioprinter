@@ -1,5 +1,10 @@
+var lp = require("lp-client");
 var express = require("express");
 var bodyParser = require("body-parser");
+
+var options = {};
+var printer = lp(options);
+
 
 var app = express();
 
@@ -18,10 +23,16 @@ app.get("/basic_get_action/:param1/:param2", get_action);
 
 function post_action(req, res) {
   console.log("post action");
+
   let data = req.body;
   let number = data.number;
+
   console.log("message recived: " + JSON.stringify(data));
   console.log(number + " * " + number + " = " + number * number);
+
+
+  printer.queue ("Hello");
+  // Sent back to computer as result
   res.send("thank you");
 }
 

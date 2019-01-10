@@ -15,6 +15,7 @@ $("#sender").click(function() {
   );
 
   function post_done(data, status) {
+    // data is result of request
     console.log(data);
     console.log(status);
     $("#sender").css("background-color", "rgb(81, 255, 20)");

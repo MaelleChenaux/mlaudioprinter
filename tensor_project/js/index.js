@@ -2,6 +2,28 @@ let recognizer;
 const NUM_FRAMES = 4;
 let examples = [];
 
+var PAGE_IP_ADDRESS = "10.192.164.21:3000";
+
+ //var PAGE_IP_ADDRESS = "localhost:3000";
+function sendData(jsonData){
+  let data_to_send = jsonData;
+
+  $.post(
+    "http://" + PAGE_IP_ADDRESS + "/basic_post_action/",
+    data_to_send,
+    post_done
+  );
+
+  function post_done(data, status) {
+    // data is result of request
+    console.log(data);
+    console.log(status);
+  }
+
+}
+
+
+
 function collect(label) {
   if (label == null) {
     return recognizer.stopListening();
@@ -132,6 +154,11 @@ var prevLabel = 1;
 async function moveSlider(labelTensor) {
   const label = (await labelTensor.data())[0];
   document.getElementById("console").textContent = label;
+  if (label != prevLabel) {
+    console.log("send label")
+    sendData({'label': label});
+  }
+
   if (label == 0 && prevLabel != 0) {
     // getJoke();
     return;
@@ -153,6 +180,8 @@ async function moveSlider(labelTensor) {
   document.getElementById("output").value =
     prevValue + (label === 0 ? -delta : delta);
   prevLabel = label;
+
+
 }
 ///////
 
