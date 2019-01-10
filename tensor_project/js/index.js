@@ -8,13 +8,18 @@ var counterLabel = 0;
 
  //var PAGE_IP_ADDRESS = "localhost:3000";
 function sendData(jsonData){
-  let data_to_send = jsonData;
+  let data_to_send = {
+    jsonData;
+    apiRequest;
+  };
 
   $.post(
     "http://" + PAGE_IP_ADDRESS + "/basic_post_action/",
     data_to_send,
     post_done
   );
+
+
 
   function post_done(data, status) {
     // data is result of request
@@ -153,6 +158,7 @@ app();
 var prevLabel = 1;
 async function moveSlider(labelTensor) {
   const label = (await labelTensor.data())[0];
+
   document.getElementById("console").textContent = label;
   if (label != prevLabel) {
     counterLabel = 0;
@@ -171,10 +177,11 @@ async function moveSlider(labelTensor) {
   }
 
   if (label == 0 && prevLabel != 0) {
-//    getJoke();
+   apiRequest= getJoke();
     return;
   }
   if (label == 1 && prevLabel != 1) {
+    apiRequest= getJoke();
     // getWord();
     return;
   }

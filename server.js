@@ -29,7 +29,6 @@ function post_action(req, res) {
   console.log("message recived: " + JSON.stringify(data));
 //  console.log(number + " * " + number + " = " + number * number);
 
-  printer.underline = adafruit_thermal_printer.UNDERLINE_THICK;
   printer.queue (data.label);
   // Sent back to computer as result
   res.send("thank you");
