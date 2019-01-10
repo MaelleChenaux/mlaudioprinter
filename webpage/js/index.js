@@ -1,7 +1,7 @@
 //var PAGE_IP_ADDRESS = "172.20.10.12:3000";
-//var PAGE_IP_ADDRESS = "10.192.162.21:3000";
+var PAGE_IP_ADDRESS = "10.192.164.21:3000";
 
- var PAGE_IP_ADDRESS = "localhost:3000";
+ //var PAGE_IP_ADDRESS = "localhost:3000";
 
 $("#sender").click(function() {
   let data_to_send = {

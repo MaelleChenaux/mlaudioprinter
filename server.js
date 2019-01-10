@@ -17,6 +17,7 @@ app.post("/basic_post_action/", post_action);
 app.get("/basic_get_action/:param1/:param2", get_action);
 
 function post_action(req, res) {
+  console.log("post action");
   let data = req.body;
   let number = data.number;
   console.log("message recived: " + JSON.stringify(data));
