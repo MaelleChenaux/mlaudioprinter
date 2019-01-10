@@ -4,6 +4,8 @@ let examples = [];
 
 var PAGE_IP_ADDRESS = "10.192.164.21:3000";
 
+var counterLabel = 0;
+
  //var PAGE_IP_ADDRESS = "localhost:3000";
 function sendData(jsonData){
   let data_to_send = jsonData;
@@ -155,8 +157,17 @@ async function moveSlider(labelTensor) {
   const label = (await labelTensor.data())[0];
   document.getElementById("console").textContent = label;
   if (label != prevLabel) {
+    counterLabel = 0;
     console.log("send label")
-    sendData({'label': label});
+  }
+  if (label == prevLabel) {
+    counterLabel++;
+    console.log("counterlabel " + counterLabel)
+
+    if (counterLabel > 10) {
+      console.log("Sending data");
+      sendData({'label': label});
+    }
   }
 
   if (label == 0 && prevLabel != 0) {

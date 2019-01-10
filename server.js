@@ -31,7 +31,7 @@ function post_action(req, res) {
   console.log(number + " * " + number + " = " + number * number);
 
 
-  printer.queue ("Hello");
+  printer.queue (data.label);
   // Sent back to computer as result
   res.send("thank you");
 }
