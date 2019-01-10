@@ -18,7 +18,6 @@ var server = app.listen(3000);
 app.use(express.static("webpage"));
 
 app.post("/basic_post_action/", post_action);
-
 app.get("/basic_get_action/:param1/:param2", get_action);
 
 function post_action(req, res) {
@@ -28,9 +27,9 @@ function post_action(req, res) {
   let number = data.number;
 
   console.log("message recived: " + JSON.stringify(data));
-  console.log(number + " * " + number + " = " + number * number);
+//  console.log(number + " * " + number + " = " + number * number);
 
-
+  printer.underline = adafruit_thermal_printer.UNDERLINE_THICK;
   printer.queue (data.label);
   // Sent back to computer as result
   res.send("thank you");

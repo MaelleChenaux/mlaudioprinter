@@ -21,9 +21,7 @@ function sendData(jsonData){
     console.log(data);
     console.log(status);
   }
-
 }
-
 
 
 function collect(label) {
@@ -165,7 +163,7 @@ async function moveSlider(labelTensor) {
     console.log("counterlabel " + counterLabel)
 
     // tibor
-    if (counterLabel > 20) {
+    if (counterLabel > 10) {
       console.log("Sending data");
       sendData({'label': label});
       counterLabel = 0;
@@ -173,7 +171,7 @@ async function moveSlider(labelTensor) {
   }
 
   if (label == 0 && prevLabel != 0) {
-    getJoke();
+//    getJoke();
     return;
   }
   if (label == 1 && prevLabel != 1) {
@@ -230,7 +228,7 @@ function listen() {
 /////REQUEST APIS
 
 
-function getJoke() {
+/*function getJoke() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -241,7 +239,7 @@ function getJoke() {
   xhttp.send();
 }
 
-/*function getNews() {
+function getNews() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
