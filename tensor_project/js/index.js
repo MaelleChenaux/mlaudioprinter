@@ -9,8 +9,8 @@ var counterLabel = 0;
  //var PAGE_IP_ADDRESS = "localhost:3000";
 function sendData(jsonData){
   let data_to_send = {
-    jsonData;
-    apiRequest;
+    jsonData,
+    apiRequest
   };
 
   $.post(
