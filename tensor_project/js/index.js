@@ -177,19 +177,15 @@ async function moveSlider(labelTensor) {
 
   if (label == 0 && prevLabel != 0) {
 //    getJoke();
-    //return;
   }
   if (label == 1 && prevLabel != 1) {
     // getWord();
-    //return;
   }
   if (label == 2 && prevLabel != 2) {
     // getNews();
-    //return;
   }
   if (label == 3&& prevLabel != 3) {
     // getNews();
-    //return;
   }
   let delta = 0.1;
   const prevValue = +document.getElementById("output").value;
@@ -233,7 +229,7 @@ function listen() {
 /////REQUEST APIS
 
 
-/*function getJoke() {
+function getJoke() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -258,7 +254,7 @@ function getNews() {
   );
   xhttp.send();
 }
-
+/*
 function getWord() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {

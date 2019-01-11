@@ -30,6 +30,16 @@ function post_action(req, res) {
 //  console.log(number + " * " + number + " = " + number * number);
 
   printer.queue (data.label);
+  function getJoke() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log(JSON.parse(this.responseText));
+      }
+    };
+    xhttp.open("GET", "https://geek-jokes.sameerkumar.website/api", true);
+    xhttp.send();
+  }
   //printer.queueFile(__dirname + '/tst.rtf');
   // Sent back to computer as result
   res.send("thank you");
