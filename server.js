@@ -2,6 +2,8 @@ var lp = require("lp-client");
 var express = require("express");
 var bodyParser = require("body-parser");
 
+const https = require('https');
+
 var options = {};
 var printer = lp(options);
 
@@ -31,16 +33,34 @@ function post_action(req, res) {
 
   printer.queue (data.label);
   function getJoke() {
-    var xhttp = new XMLHttpRequest();
+    /*var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         console.log(JSON.parse(this.responseText));
       }
     };
     xhttp.open("GET", "https://geek-jokes.sameerkumar.website/api", true);
-    xhttp.send();
+    xhttp.send();*/
+    https.get('https://geek-jokes.sameerkumar.website/api', (resp) => {
+      let data = '';
+
+      // A chunk of data has been recieved.
+      resp.on('data', (chunk) => {
+        data += chunk;
+      });
+
+      // The whole response has been received. Print out the result.
+      resp.on('end', () => {
+        console.log(JSON.parse(data).explanation);
+      });
+
+    }).on("error", (err) => {
+      console.log("Error: " + err.message);
+    });
   }
   getJoke();
+
+
   //printer.queueFile(__dirname + '/tst.rtf');
   // Sent back to computer as result
   res.send("thank you");
