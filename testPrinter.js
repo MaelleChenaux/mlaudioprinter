@@ -4,7 +4,6 @@ var SerialPort = require('serialport'),
     }),
     Printer = require('thermalprinter');
 
-var path = __dirname + '/images/nodebot.png';
 
 serialPort.on('open',function() {
 
@@ -23,7 +22,6 @@ serialPort.on('open',function() {
             .big(true)
             .right()
             .printLine('second line')
-            .printImage(path)
             .print(function() {
                 console.log('done');
                 process.exit();
