@@ -1,4 +1,4 @@
-var SerialPort = require('serialport'),
+/*var SerialPort = require('serialport'),
     serialPort = new SerialPort('/dev/ttyUSB0', {
         baudRate: 19200
     }),
@@ -27,3 +27,4 @@ serialPort.on('open',function() {
             });
     });
 });
+*/
