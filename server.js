@@ -72,7 +72,7 @@ function getJoke() {
             .printLine(JSON.parse(data))
             .print(function() {
                 console.log('done');
-                process.exit();
+                //process.exit();
             });
       }
       else {
