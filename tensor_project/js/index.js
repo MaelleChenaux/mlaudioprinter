@@ -229,7 +229,7 @@ function listen() {
 
 /////REQUEST APIS
 
-/*
+
 function getJoke() {
   https.get('https://geek-jokes.sameerkumar.website/api', (resp) => {
     let data = '';
@@ -279,5 +279,3 @@ function getWord() {
   });
 }
 getWord();
-
-*/

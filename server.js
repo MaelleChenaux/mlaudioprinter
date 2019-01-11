@@ -27,6 +27,7 @@ function post_action(req, res) {
   let data = req.body;
   console.log("message recived: " + JSON.stringify(data));
 
+
   function getJoke() {
     https.get('https://geek-jokes.sameerkumar.website/api', (resp) => {
       let data = '';
@@ -41,32 +42,7 @@ function post_action(req, res) {
       console.log("Error: " + err.message);
     });
   }
-
-
-  function getWord() {
-    https.get('http://api.wordnik.com/v4/words.json/wordOfTheDay?api_key=55237b70fefb31e7f560a0dac07035bd0e47772c1322d6a84', (resp) => {
-      let data = '';
-      resp.on('data', (chunk) => {
-        data += chunk;
-      });
-      resp.on('end', () => {
-        console.log(JSON.parse(this.responseText).word);
-        console.log(JSON.parse(this.responseText).word);
-      });
-    }).on("error", (err) => {
-      console.log("Error: " + err.message);
-    });
-  }
-  getWord();
-
-
-  if (data == 1) {
   getJoke();
-} else if (data==2){
-  getWord();
-}
-
-
 
   printer.queue (data.label);
 
