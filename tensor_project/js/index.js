@@ -162,14 +162,13 @@ async function moveSlider(labelTensor) {
     counterLabel = 0;
     // console.log("send label")
     console.log("label is " + label);
-
   }
+  
   if (label === prevLabel) {
     counterLabel++;
     //console.log("counterlabel " + counterLabel)
 
-    // tibor
-    if (counterLabel > 50 && label != 3 && !alreadySent[label]) {
+    if (counterLabel > 20 && label != 3 && !alreadySent[label]) {
       console.log("Sending data label " + label);
       sendData({'label': label});
       counterLabel = 0;

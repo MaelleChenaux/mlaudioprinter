@@ -1,4 +1,4 @@
-
+// printerReady
 var express = require("express");
 var bodyParser = require("body-parser");
 
@@ -19,6 +19,7 @@ serialPort.on('open',function() {
     });
 });
 
+// SEND server
 
 var app = express();
 
@@ -45,13 +46,14 @@ function post_action(req, res) {
   if(data.label == 0) {
     getJoke();
   } else if (data.label == 1){
+
     getWord();
-  }
+
+  } else if (data.label == 2){
+    console.log('sound2');
+    }
 
 
-  //printer.queue (data.label);
-
-  //printer.queueFile(__dirname + '/tst.rtf');
   // Sent back to computer as result
   res.send("thank you");
 }
@@ -92,7 +94,19 @@ function getWord() {
     });
     resp.on('end', () => {
       console.log(JSON.parse(this.responseText).word);
-      console.log(JSON.parse(this.responseText).word);
+      //printer.queue (JSON.parse(data));
+      if(printerReady) {
+        printer
+            .printLine(JSON.parse(this.responseText).word)
+            .print(function() {
+                console.log('done');
+                process.exit();
+            });
+      }
+      else {
+        console.log("not ready")
+      }
+
     });
   }).on("error", (err) => {
     console.log("Error: " + err.message);
