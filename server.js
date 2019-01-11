@@ -30,6 +30,8 @@ function post_action(req, res) {
 
   if(data.label == 0) {
     getJoke();
+  } else if (data.label == 1){
+    getWord();
   }
 
 
@@ -39,6 +41,9 @@ function post_action(req, res) {
   // Sent back to computer as result
   res.send("thank you");
 }
+
+
+
 function getJoke() {
   https.get('https://geek-jokes.sameerkumar.website/api', (resp) => {
     let data = '';
@@ -53,6 +58,23 @@ function getJoke() {
     console.log("Error: " + err.message);
   });
 }
+
+
+function getWord() {
+  https.get('http://api.wordnik.com/v4/words.json/wordOfTheDay?api_key=55237b70fefb31e7f560a0dac07035bd0e47772c1322d6a84', (resp) => {
+    let data = '';
+    resp.on('data', (chunk) => {
+      data += chunk;
+    });
+    resp.on('end', () => {
+      console.log(JSON.parse(this.responseText).word);
+      console.log(JSON.parse(this.responseText).word);
+    });
+  }).on("error", (err) => {
+    console.log("Error: " + err.message);
+  });
+}
+
 function get_action(req, res) {
   let data = req.params;
   console.log("user asked for stuff like that:");
