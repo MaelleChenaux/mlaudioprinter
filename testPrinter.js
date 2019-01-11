@@ -1,4 +1,4 @@
-/*var SerialPort = require('serialport').SerialPort,
+var SerialPort = require('serialport').SerialPort,
     serialPort = new SerialPort('/dev/ttyUSB0', {
         baudrate: 19200
     }),
@@ -26,36 +26,4 @@ serialPort.on('open',function() {
                 process.exit();
             });
     });
-});
-*/
-const raspi = require('raspi');
-const Serial = require('raspi-serial').Serial;
-
-raspi.init(() => {
-  var serial = new Serial();
-  serial.open(() => {
-    var printer = new Printer(serial);
-    printer.on('ready', function() {
-        printer
-            .indent(10)
-            .horizontalLine(16)
-            .bold(true)
-            .indent(10)
-            .printLine('first line')
-            .bold(false)
-            .inverse(true)
-            .big(true)
-            .right()
-            .printLine('second line')
-            .printImage(path)
-            .print(function() {
-                console.log('done');
-                process.exit();
-            });
-    });
-    serial.on('data', (data) => {
-      process.stdout.write(data);
-    });
-    serial.write('Hello from raspi-serial');
-  });
 });
