@@ -176,17 +176,18 @@ async function moveSlider(labelTensor) {
   }
 
   if (label == 0 && prevLabel != 0) {
-//    getJoke();
+
   }
+
   if (label == 1 && prevLabel != 1) {
-    // getWord();
   }
+
   if (label == 2 && prevLabel != 2) {
-    // getNews();
   }
+
   if (label == 3&& prevLabel != 3) {
-    // getNews();
   }
+
   let delta = 0.1;
   const prevValue = +document.getElementById("output").value;
   document.getElementById("output").value =
@@ -228,46 +229,55 @@ function listen() {
 
 /////REQUEST APIS
 
-
+/*
 function getJoke() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      console.log(JSON.parse(this.responseText));
-    }
-  };
-  xhttp.open("GET", "https://geek-jokes.sameerkumar.website/api", true);
-  xhttp.send();
+  https.get('https://geek-jokes.sameerkumar.website/api', (resp) => {
+    let data = '';
+    resp.on('data', (chunk) => {
+      data += chunk;
+    });
+    resp.on('end', () => {
+      console.log(JSON.parse(data));
+      printer.queue (JSON.parse(data));
+    });
+  }).on("error", (err) => {
+    console.log("Error: " + err.message);
+  });
 }
+getJoke();
+
 
 function getNews() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      console.log(JSON.parse(this.responseText));
-    }
-  };
-  xhttp.open(
-    "GET",
-    "https://newsapi.org/v2/top-headlines?country=ch&apiKey=eb40180347c54e3a9ba51a1327ab80d8",
-    true
-  );
-  xhttp.send();
+  https.get('https://newsapi.org/v2/top-headlines?sources=google-news-fr&apiKey=eb40180347c54e3a9ba51a1327ab80d8', (resp) => {
+    let data = '';
+    resp.on('data', (chunk) => {
+      data += chunk;
+    });
+    resp.on('end', () => {
+      console.log(JSON.parse(this.responseText).articles[0].description);
+      console.log(JSON.parse(this.responseText).articles[0].description);
+    });
+  }).on("error", (err) => {
+    console.log("Error: " + err.message);
+  });
 }
-/*
+getNews();
+
+
 function getWord() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      console.log(JSON.parse(this.responseText));
-    }
-  };
-  //xhttp.open("GET", "http://api.wordnik.com/v4/words.json/wordOfTheDay?api_key=55237b70fefb31e7f560a0dac07035bd0e47772c1322d6a84", true);
-  xhttp.open(
-    "GET",
-    "http://api.wordnik.com/v4/words.json/randomWord?api_key=55237b70fefb31e7f560a0dac07035bd0e47772c1322d6a84",
-    true
-  );
-  xhttp.send();
+  https.get('http://api.wordnik.com/v4/words.json/wordOfTheDay?api_key=55237b70fefb31e7f560a0dac07035bd0e47772c1322d6a84', (resp) => {
+    let data = '';
+    resp.on('data', (chunk) => {
+      data += chunk;
+    });
+    resp.on('end', () => {
+      console.log(JSON.parse(this.responseText).word);
+      console.log(JSON.parse(this.responseText).word);
+    });
+  }).on("error", (err) => {
+    console.log("Error: " + err.message);
+  });
 }
+getWord();
+
 */

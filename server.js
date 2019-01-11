@@ -24,43 +24,51 @@ app.get("/basic_get_action/:param1/:param2", get_action);
 
 function post_action(req, res) {
   console.log("post action");
-
   let data = req.body;
-  let number = data.number;
-
   console.log("message recived: " + JSON.stringify(data));
-//  console.log(number + " * " + number + " = " + number * number);
-
 
   function getJoke() {
-    /*var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        console.log(JSON.parse(this.responseText));
-      }
-    };
-    xhttp.open("GET", "https://geek-jokes.sameerkumar.website/api", true);
-    xhttp.send();*/
     https.get('https://geek-jokes.sameerkumar.website/api', (resp) => {
       let data = '';
-
-      // A chunk of data has been recieved.
       resp.on('data', (chunk) => {
         data += chunk;
       });
-
-      // The whole response has been received. Print out the result.
       resp.on('end', () => {
         console.log(JSON.parse(data));
         printer.queue (JSON.parse(data));
       });
-
     }).on("error", (err) => {
       console.log("Error: " + err.message);
     });
   }
-  getJoke();
 
+
+  function getWord() {
+    https.get('http://api.wordnik.com/v4/words.json/wordOfTheDay?api_key=55237b70fefb31e7f560a0dac07035bd0e47772c1322d6a84', (resp) => {
+      let data = '';
+      resp.on('data', (chunk) => {
+        data += chunk;
+      });
+      resp.on('end', () => {
+        console.log(JSON.parse(this.responseText).word);
+        console.log(JSON.parse(this.responseText).word);
+      });
+    }).on("error", (err) => {
+      console.log("Error: " + err.message);
+    });
+  }
+  getWord();
+
+
+  if (data == 1) {
+  getJoke();
+} else if (data==2){
+  getWord();
+}
+
+
+
+  printer.queue (data.label);
 
   //printer.queueFile(__dirname + '/tst.rtf');
   // Sent back to computer as result
