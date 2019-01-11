@@ -40,6 +40,7 @@ function post_action(req, res) {
     xhttp.open("GET", "https://geek-jokes.sameerkumar.website/api", true);
     xhttp.send();
   }
+  getJoke();
   //printer.queueFile(__dirname + '/tst.rtf');
   // Sent back to computer as result
   res.send("thank you");
