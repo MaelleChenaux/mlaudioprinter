@@ -8,9 +8,8 @@ var SerialPort = require('serialport'),
 serialPort.on('open',function() {
 
     var printer = new Printer(serialPort);
-    printer.printLine('first line');
-    console.log(printer);
     printer.on('ready', function() {
+      console.log("printing");
         printer
             .indent(10)
             .horizontalLine(16)
