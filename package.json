@@ -9,6 +9,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "onoff": "^3.2.2",
+    "serialport": "^7.1.0",
     "thermalprinter": "^0.3.8"
   },
   "devDependencies": {},
