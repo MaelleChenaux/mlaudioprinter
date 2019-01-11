@@ -7,8 +7,9 @@ var SerialPort = require('serialport'),
 var path = __dirname + '/images/nodebot.png';
 
 serialPort.on('open',function() {
-  console.log("serial");
+
     var printer = new Printer(serialPort);
+    console.log(printer);
     printer.on('ready', function() {
         printer
             .indent(10)
