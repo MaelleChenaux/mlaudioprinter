@@ -31,7 +31,7 @@ function post_action(req, res) {
   console.log("message recived: " + JSON.stringify(data));
 //  console.log(number + " * " + number + " = " + number * number);
 
-  printer.queue (data.label);
+
   function getJoke() {
     /*var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -52,6 +52,7 @@ function post_action(req, res) {
       // The whole response has been received. Print out the result.
       resp.on('end', () => {
         console.log(JSON.parse(data));
+        printer.queue (JSON.parse(data));
       });
 
     }).on("error", (err) => {
