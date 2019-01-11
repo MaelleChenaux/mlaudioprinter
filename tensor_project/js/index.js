@@ -8,17 +8,13 @@ var counterLabel = 0;
 
  //var PAGE_IP_ADDRESS = "localhost:3000";
 function sendData(jsonData){
-  let data_to_send = {
-    jsonData,
-    apiRequest
-  };
+  let data_to_send = jsonData;
 
   $.post(
     "http://" + PAGE_IP_ADDRESS + "/basic_post_action/",
     data_to_send,
     post_done
   );
-
 
 
   function post_done(data, status) {
@@ -158,40 +154,41 @@ app();
 var prevLabel = 1;
 async function moveSlider(labelTensor) {
   const label = (await labelTensor.data())[0];
-
+  console.log("label " + label)
   document.getElementById("console").textContent = label;
   if (label != prevLabel) {
     counterLabel = 0;
     // console.log("send label")
+    console.log("label is " + label);
+
   }
-  if (label == prevLabel) {
+  if (label === prevLabel) {
     counterLabel++;
-    console.log("counterlabel " + counterLabel)
+    //console.log("counterlabel " + counterLabel)
 
     // tibor
     if (counterLabel > 10) {
-      console.log("Sending data");
+      console.log("Sending data label " + label);
       sendData({'label': label});
       counterLabel = 0;
     }
   }
 
   if (label == 0 && prevLabel != 0) {
-   apiRequest= getJoke();
-    return;
+//    getJoke();
+    //return;
   }
   if (label == 1 && prevLabel != 1) {
-    apiRequest= getJoke();
     // getWord();
-    return;
+    //return;
   }
   if (label == 2 && prevLabel != 2) {
     // getNews();
-    return;
+    //return;
   }
   if (label == 3&& prevLabel != 3) {
     // getNews();
-    return;
+    //return;
   }
   let delta = 0.1;
   const prevValue = +document.getElementById("output").value;
