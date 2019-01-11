@@ -1,11 +1,9 @@
-var lp = require("lp-client");
+
 var express = require("express");
 var bodyParser = require("body-parser");
 
 const https = require('https');
 
-var options = {};
-var printer = lp(options);
 
 
 var app = express();
