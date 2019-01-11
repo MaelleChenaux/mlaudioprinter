@@ -42,8 +42,6 @@ function post_action(req, res) {
   res.send("thank you");
 }
 
-
-
 function getJoke() {
   https.get('https://geek-jokes.sameerkumar.website/api', (resp) => {
     let data = '';
