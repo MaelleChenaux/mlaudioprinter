@@ -8,7 +8,8 @@
     "@tensorflow/tfjs": "^0.14.1",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "onoff": "^3.2.2"
+    "onoff": "^3.2.2",
+    "thermalprinter": "^0.3.8"
   },
   "devDependencies": {},
   "scripts": {

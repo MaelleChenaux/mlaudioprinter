@@ -153,6 +153,7 @@ app();
 
 //////DETECTION CLASSE AND GET
 var prevLabel = 1;
+var alreadySent = [false, false, false];
 async function moveSlider(labelTensor) {
   const label = (await labelTensor.data())[0];
   console.log("label " + label)
@@ -168,10 +169,11 @@ async function moveSlider(labelTensor) {
     //console.log("counterlabel " + counterLabel)
 
     // tibor
-    if (counterLabel > 50) {
+    if (counterLabel > 50 && label != 3 && !alreadySent[label]) {
       console.log("Sending data label " + label);
       sendData({'label': label});
       counterLabel = 0;
+      alreadySent[label] = true;
     }
   }
 
@@ -229,7 +231,7 @@ function listen() {
 
 /////REQUEST APIS
 
-
+/*
 function getJoke() {
   https.get('https://geek-jokes.sameerkumar.website/api', (resp) => {
     let data = '';
@@ -279,3 +281,4 @@ function getWord() {
   });
 }
 getWord();
+*/

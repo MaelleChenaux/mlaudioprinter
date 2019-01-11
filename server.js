@@ -28,29 +28,31 @@ function post_action(req, res) {
   console.log("message recived: " + JSON.stringify(data));
 
 
-  function getJoke() {
-    https.get('https://geek-jokes.sameerkumar.website/api', (resp) => {
-      let data = '';
-      resp.on('data', (chunk) => {
-        data += chunk;
-      });
-      resp.on('end', () => {
-        console.log(JSON.parse(data));
-        printer.queue (JSON.parse(data));
-      });
-    }).on("error", (err) => {
-      console.log("Error: " + err.message);
-    });
+  if(data.label == 0) {
+    getJoke();
   }
-  getJoke();
 
-  printer.queue (data.label);
+
+  //printer.queue (data.label);
 
   //printer.queueFile(__dirname + '/tst.rtf');
   // Sent back to computer as result
   res.send("thank you");
 }
-
+function getJoke() {
+  https.get('https://geek-jokes.sameerkumar.website/api', (resp) => {
+    let data = '';
+    resp.on('data', (chunk) => {
+      data += chunk;
+    });
+    resp.on('end', () => {
+      console.log(JSON.parse(data));
+      printer.queue (JSON.parse(data));
+    });
+  }).on("error", (err) => {
+    console.log("Error: " + err.message);
+  });
+}
 function get_action(req, res) {
   let data = req.params;
   console.log("user asked for stuff like that:");
