@@ -1,5 +1,5 @@
 var SerialPort = require('serialport'),
-    serialPort = new SerialPort('/dev/ttyAMA0', {
+    serialPort = new SerialPort('/dev/ttyS0', {
         baudRate: 19200
     }),
     Printer = require('thermalprinter');
@@ -11,16 +11,9 @@ serialPort.on('open',function() {
     printer.on('ready', function() {
       console.log("printing");
         printer
-            .indent(10)
-            .horizontalLine(16)
             .bold(true)
             .indent(10)
-            .printLine('first line')
-            .bold(false)
-            .inverse(true)
-            .big(true)
-            .right()
-            .printLine('second line')
+            .printLine('first line^is a very long long long long long line')
             .print(function() {
                 console.log('done');
                 process.exit();
