@@ -9,6 +9,7 @@ var path = __dirname + '/images/nodebot.png';
 serialPort.on('open',function() {
 
     var printer = new Printer(serialPort);
+    printer.printLine('first line');
     console.log(printer);
     printer.on('ready', function() {
         printer
