@@ -22,6 +22,22 @@ app.use(express.static("webpage"));
 app.post("/basic_post_action/", post_action);
 app.get("/basic_get_action/:param1/:param2", get_action);
 
+var SerialPort = require('serialport'),
+    serialPort = new SerialPort('/dev/ttyAMA0', {
+        baudRate: 19200
+    }),
+    Printer = require('thermalprinter');
+var printerReady = false;
+
+serialPort.on('open',function() {
+
+    var printer = new Printer(serialPort);
+    printer.on('ready', function() {
+      console.log("printerReady");
+      printerReady = true;
+    });
+});
+
 function post_action(req, res) {
   console.log("post action");
   let data = req.body;
@@ -50,7 +66,13 @@ function getJoke() {
     });
     resp.on('end', () => {
       console.log(JSON.parse(data));
-      printer.queue (JSON.parse(data));
+      //printer.queue (JSON.parse(data));
+      printer
+          .printLine(JSON.parse(data))
+          .print(function() {
+              console.log('done');
+              process.exit();
+          });
     });
   }).on("error", (err) => {
     console.log("Error: " + err.message);
