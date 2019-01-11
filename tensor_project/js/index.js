@@ -2,7 +2,8 @@ let recognizer;
 const NUM_FRAMES = 4;
 let examples = [];
 
-var PAGE_IP_ADDRESS = "10.192.164.21:3000";
+var PAGE_IP_ADDRESS = "10.192.164.21:3000";  //ECALEVENT
+//var PAGE_IP_ADDRESS = "172.20.10.12:3000";  //HOTSPOT
 
 var counterLabel = 0;
 
@@ -167,7 +168,7 @@ async function moveSlider(labelTensor) {
     //console.log("counterlabel " + counterLabel)
 
     // tibor
-    if (counterLabel > 10) {
+    if (counterLabel > 50) {
       console.log("Sending data label " + label);
       sendData({'label': label});
       counterLabel = 0;
