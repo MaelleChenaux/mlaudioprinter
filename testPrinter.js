@@ -1,5 +1,5 @@
 var SerialPort = require('serialport'),
-    serialPort = new SerialPort('/dev/ttyS0', {
+    serialPort = new SerialPort('/dev/ttyUSB0', {
         baudRate: 19200
     }),
     Printer = require('thermalprinter');
@@ -7,8 +7,8 @@ var SerialPort = require('serialport'),
 var path = __dirname + '/images/nodebot.png';
 
 serialPort.on('open',function() {
+  console.log("serial");
     var printer = new Printer(serialPort);
-    console.log("serial");
     printer.on('ready', function() {
         printer
             .indent(10)
