@@ -4,7 +4,7 @@ var bodyParser = require("body-parser");
 
 const https = require('https');
 var SerialPort = require('serialport'),
-    serialPort = new SerialPort('/dev/ttyAMA0', {
+    serialPort = new SerialPort('/dev/ttyS0', {
         baudRate: 19200
     }),
     Printer = require('thermalprinter');
