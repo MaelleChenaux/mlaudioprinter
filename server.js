@@ -36,6 +36,9 @@ serialPort.on('open',function() {
           .horizontalLine(16)
           .printLine(date)
           .printLine(time)
+          .printLine('')
+          .printLine('')
+
     });
 });
 
@@ -62,9 +65,8 @@ function post_action(req, res) {
   if(data.label == 0) {
     getJoke();
   } else if (data.label == 1){
-    //getMeteo();
     getNews();
-
+    getMeteo();
     //getWord();
   } else if (data.label == 2){
     getHoroscope();
@@ -86,15 +88,14 @@ function getJoke() {
       console.log(JSON.parse(data));
       if(printerReady) {
         printer
-            .center(true)
-            .big(true)
-            .printLine('Joke of the day')
-            .center(false)
-            .big(false)
+            .left(true)
+            .medium(true)
+            .printLine('JOKE OF THE DAY')
             .printLine(JSON.parse(data))
+            .printLine('')
+            .printLine('')
             .print(function() {
                 console.log('done');
-                //process.exit();
             });
       }
       else {
@@ -116,15 +117,13 @@ function getNews() {
       data += chunk;
     });
     resp.on('end', () => {
-      console.log(JSON.parse(this.responseText).articles[1].description);
+      console.log(JSON.parse(this.responseText).totalResults);
       if(printerReady) {
         printer
-            .center(true)
-            .big(true)
-            .printLine('What is the weather today ?')
-            .big(false)
-            .center(false)
-            .printLine(JSON.parse(data))
+            .left(true)
+            .small(true)
+            .printLine('News')
+            .printLine(JSON.parse(this.responseText).totalResults)
             .print(function() {
                 console.log('done');
                 //process.exit();
@@ -175,10 +174,10 @@ function getMeteo() {
       data += chunk;
     });
     resp.on('end', () => {
-      console.log(JSON.parse(this.responseText).daily.summary);
+      console.log(JSON.parse(this.responseText).latitude);
       if(printerReady) {
         printer
-            .printLine(JSON.parse(this.responseText).daily.summary)
+            .printLine(JSON.parse(this.responseText).latitude)
             .print(function() {
                 console.log('done');
                 process.exit();

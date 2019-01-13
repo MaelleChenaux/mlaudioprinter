@@ -168,7 +168,7 @@ async function moveSlider(labelTensor) {
     counterLabel++;
     //console.log("counterlabel " + counterLabel)
 
-    if (counterLabel > 20 && label != 3 && !alreadySent[label]) {
+    if (counterLabel > 50 && label != 3 && !alreadySent[label]) {
       console.log("Sending data label " + label);
       sendData({'label': label});
       counterLabel = 0;
@@ -177,7 +177,6 @@ async function moveSlider(labelTensor) {
   }
 
   if (label == 0 && prevLabel != 0) {
-
   }
 
   if (label == 1 && prevLabel != 1) {
@@ -194,8 +193,6 @@ async function moveSlider(labelTensor) {
   document.getElementById("output").value =
     prevValue + (label === 0 ? -delta : delta);
   prevLabel = label;
-
-
 }
 ///////
 
