@@ -8,11 +8,10 @@ var SerialPort = require('serialport'),
         baudRate: 19200
     }),
 
-    Printer = require('thermalprinter');
+Printer = require('thermalprinter');
 var printerReady = false;
 var printer;
 serialPort.on('open',function() {
-
     printer = new Printer(serialPort);
     printer.on('ready', function() {
       console.log("printerReady");
@@ -25,8 +24,20 @@ var app = express();
 
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(bodyParser.json({ limit: "50mb", extended: true }));
-
 console.log("online");
+
+//Mot de bienvenue
+printer
+			.indent(10)
+			.horizontalLine(16)
+			.bold(true)
+			.indent(10)
+			.printLine('first line')
+			.bold(false)
+			.inverse(true)
+			.big(true)
+			.right()
+			.printLine('second line');
 
 var server = app.listen(3000);
 app.use(express.static("webpage"));
@@ -39,7 +50,6 @@ function post_action(req, res) {
   let data = req.body;
   console.log("message recived: " + JSON.stringify(data));
 
-
   if(data.label == 0) {
     getJoke();
   } else if (data.label == 1){
@@ -50,7 +60,6 @@ function post_action(req, res) {
   } else if (data.label == 2){
     getHoroscope();
   }
-
   // Sent back to computer as result
   res.send("thank you");
 }
@@ -63,7 +72,6 @@ function getJoke() {
     });
     resp.on('end', () => {
       console.log(JSON.parse(data));
-      //printer.queue (JSON.parse(data));
       if(printerReady) {
         printer
             .printLine(JSON.parse(data))
@@ -89,39 +97,39 @@ function getNews() {
       data += chunk;
     });
     resp.on('end', () => {
-      console.log(JSON.parse(this.responseText).articles[0].description);
+      console.log(JSON.parse(this.responseText).articles[1].description);
     });
   }).on("error", (err) => {
     console.log("Error: " + err.message);
   });
 }
 
-function getWord() {
-  https.get('https://api.wordnik.com/v4/words.json/wordOfTheDay?api_key=55237b70fefb31e7f560a0dac07035bd0e47772c1322d6a84', (resp) => {
-    let data = '';
-    resp.on('data', (chunk) => {
-      data += chunk;
-    });
-    resp.on('end', () => {
-      console.log(JSON.parse(this.responseText).word);
-      //printer.queue (JSON.parse(data));
-      if(printerReady) {
-        printer
-            .printLine(JSON.parse(this.responseText).word)
-            .print(function() {
-                console.log('done');
-                process.exit();
-            });
-      }
-      else {
-        console.log("not ready")
-      }
-
-    });
-  }).on("error", (err) => {
-    console.log("Error: " + err.message);
-  });
-}
+// function getWord() {
+//   https.get('https://api.wordnik.com/v4/words.json/wordOfTheDay?api_key=55237b70fefb31e7f560a0dac07035bd0e47772c1322d6a84', (resp) => {
+//     let data = '';
+//     resp.on('data', (chunk) => {
+//       data += chunk;
+//     });
+//     resp.on('end', () => {
+//       console.log(JSON.parse(this.responseText).word);
+//       //printer.queue (JSON.parse(data));
+//       if(printerReady) {
+//         printer
+//             .printLine(JSON.parse(this.responseText).word)
+//             .print(function() {
+//                 console.log('done');
+//                 process.exit();
+//             });
+//       }
+//       else {
+//         console.log("not ready")
+//       }
+//
+//     });
+//   }).on("error", (err) => {
+//     console.log("Error: " + err.message);
+//   });
+// }
 
 function getHoroscope() {
   https.get('https://horoscope-api.herokuapp.com/horoscope/today/Virgo', (resp) => {
@@ -148,7 +156,7 @@ function getHoroscope() {
   });
 }
 
-/*function getMeteo() {
+function getMeteo() {
   https.get('https://what-weather-dark-sky.glitch.me/api/46.519653/6.632273', (resp) => {
     let data = '';
     resp.on('data', (chunk) => {
@@ -171,7 +179,8 @@ function getHoroscope() {
   }).on("error", (err) => {
     console.log("Error: " + err.message);
   });
-}*/
+}
+
 
 function get_action(req, res) {
   let data = req.params;
