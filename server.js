@@ -65,10 +65,11 @@ function post_action(req, res) {
   if(data.label == 0) {
     getJoke();
   } else if (data.label == 1){
-    getNews();
+    //getNews();
     getMeteo();
     //getWord();
   } else if (data.label == 2){
+    getWord();
     getHoroscope();
   }
   // Sent back to computer as result
@@ -169,17 +170,17 @@ function getHoroscope() {
 
 //METEO
 function getMeteo() {
-  https.get('https://what-weather-dark-sky.glitch.me/api/46.519653/6.632273', (resp) => {
+  https.get('https://api.darksky.net/forecast/2ebee6ae2905747898ba06e19b272038/46.519653,6.632273', (resp) => {
     let data = '';
     resp.on('data', (chunk) => {
       data += chunk;
     });
     resp.on('end', () => {
-      console.log(JSON.parse(this.responseText).latitude);
+      console.log(JSON.parse(this.responseText).currently.summary);
       if(printerReady) {
         printer
             .printLine('WEATHER')
-            .printLine(JSON.parse(this.responseText).latitude)
+            .printLine(JSON.parse(this.responseText).currently.summary)
             .print(function() {
                 console.log('done');
                 //process.exit();
@@ -188,6 +189,35 @@ function getMeteo() {
       else {
         console.log("not ready")
       }
+    });
+  }).on("error", (err) => {
+    console.log("Error: " + err.message);
+  });
+}
+
+
+// WORDOFTHEDAY
+function getWord() {
+  https.get('https://api.wordnik.com/v4/words.json/wordOfTheDay?api_key=55237b70fefb31e7f560a0dac07035bd0e47772c1322d6a84', (resp) => {
+    let data = '';
+    resp.on('data', (chunk) => {
+      data += chunk;
+    });
+    resp.on('end', () => {
+      console.log(JSON.parse(this.responseText).word);
+      //printer.queue (JSON.parse(data));
+      if(printerReady) {
+        printer
+            .printLine(JSON.parse(this.responseText).word)
+            .print(function() {
+                console.log('done');
+                process.exit();
+            });
+      }
+      else {
+        console.log("not ready")
+      }
+
     });
   }).on("error", (err) => {
     console.log("Error: " + err.message);
