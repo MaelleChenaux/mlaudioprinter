@@ -43,7 +43,9 @@ function post_action(req, res) {
   if(data.label == 0) {
     getJoke();
   } else if (data.label == 1){
-    getMeteo();
+    //getMeteo();
+    getNews();
+
     //getWord();
   } else if (data.label == 2){
     getHoroscope();
@@ -74,6 +76,20 @@ function getJoke() {
         console.log("not ready")
       }
 
+    });
+  }).on("error", (err) => {
+    console.log("Error: " + err.message);
+  });
+}
+
+function getNews() {
+  https.get('https://newsapi.org/v2/top-headlines?sources=google-news-fr&apiKey=eb40180347c54e3a9ba51a1327ab80d8', (resp) => {
+    let data = '';
+    resp.on('data', (chunk) => {
+      data += chunk;
+    });
+    resp.on('end', () => {
+      console.log(JSON.parse(this.responseText).articles[0].description);
     });
   }).on("error", (err) => {
     console.log("Error: " + err.message);
@@ -132,7 +148,7 @@ function getHoroscope() {
   });
 }
 
-function getMeteo() {
+/*function getMeteo() {
   https.get('https://what-weather-dark-sky.glitch.me/api/46.519653/6.632273', (resp) => {
     let data = '';
     resp.on('data', (chunk) => {
@@ -155,7 +171,7 @@ function getMeteo() {
   }).on("error", (err) => {
     console.log("Error: " + err.message);
   });
-}
+}*/
 
 function get_action(req, res) {
   let data = req.params;
