@@ -19,7 +19,6 @@ serialPort.on('open',function() {
         .bold(false)
         .inverse(true)
         .big(true)
-        .indient(0)
         .center()
         .printLine('Le quotidien')
             .print(function() {
