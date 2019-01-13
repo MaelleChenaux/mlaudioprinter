@@ -65,18 +65,37 @@ function post_action(req, res) {
   if(data.label == 0) {
     getJoke();
   } else if (data.label == 1){
+    getSudoku();
     //getNews();
-    getMeteo();
+    //getMeteo();
     //getWord();
   } else if (data.label == 2){
-    getWord();
-    getHoroscope();
+    //getWord();
+    //getHoroscope();
   }
   // Sent back to computer as result
   res.send("thank you");
 }
 
 
+///SUDOKU
+function getSudoku() {
+      if(printerReady) {
+        printer
+        .printImage("/1.png")
+            .print(function() {
+                console.log('done');
+            });
+      }
+      else {
+        console.log("not ready")
+      }
+
+    });
+  }).on("error", (err) => {
+    console.log("Error: " + err.message);
+  });
+}
 
 // JOKE
 function getJoke() {
@@ -108,6 +127,12 @@ function getJoke() {
   });
 }
 
+///QUOTES
+/*
+$.getJSON("https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=", function(a) {
+  $("body").append(a[0].content + "<p>&mdash; " + a[0].title + "</p>")
+});
+ */
 
 // NEWS
 function getNews() {
@@ -117,12 +142,12 @@ function getNews() {
       data += chunk;
     });
     resp.on('end', () => {
-      console.log(JSON.parse(this.responseText).totalResults);
+      console.log(JSON.parse(this.responseText).articles[0].description);
       if(printerReady) {
         printer
             .left()
             .printLine('News')
-            .printLine(JSON.parse(this.responseText).totalResults)
+            .printLine(JSON.parse(this.responseText).articles[0].description)
             .printLine('')
             .printLine('')
             .print(function() {
