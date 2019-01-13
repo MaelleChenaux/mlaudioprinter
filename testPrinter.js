@@ -14,13 +14,13 @@ serialPort.on('open',function() {
         .indent(10)
         .horizontalLine(16)
         .bold(true)
-        .indent(10)
-        .printLine('first line')
+        .indent(15)
+        .printLine('GOOD MORNING')
         .bold(false)
         .inverse(true)
         .big(true)
-        .right()
-        .printLine('second line')
+        .center()
+        .printLine('Le quotidien')
             .print(function() {
                 console.log('done');
                 process.exit();
