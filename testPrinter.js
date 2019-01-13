@@ -11,9 +11,16 @@ serialPort.on('open',function() {
     printer.on('ready', function() {
       console.log("printing");
         printer
-            .bold(true)
-            .indent(10)
-            .printLine('first line^is a very long long long long long line')
+        .indent(10)
+        .horizontalLine(16)
+        .bold(true)
+        .indent(10)
+        .printLine('first line')
+        .bold(false)
+        .inverse(true)
+        .big(true)
+        .right()
+        .printLine('second line')
             .print(function() {
                 console.log('done');
                 process.exit();

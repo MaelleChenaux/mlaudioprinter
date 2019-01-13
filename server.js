@@ -27,17 +27,7 @@ app.use(bodyParser.json({ limit: "50mb", extended: true }));
 console.log("online");
 
 //Mot de bienvenue
-printer
-			.indent(10)
-			.horizontalLine(16)
-			.bold(true)
-			.indent(10)
-			.printLine('first line')
-			.bold(false)
-			.inverse(true)
-			.big(true)
-			.right()
-			.printLine('second line');
+
 
 var server = app.listen(3000);
 app.use(express.static("webpage"));
