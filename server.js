@@ -87,15 +87,8 @@ function getSudoku() {
                 console.log('done');
             });
       }
-      else {
-        console.log("not ready")
-      }
+    }
 
-    });
-  }).on("error", (err) => {
-    console.log("Error: " + err.message);
-  });
-}
 
 // JOKE
 function getJoke() {
