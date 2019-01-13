@@ -1,0 +1,9 @@
+#sound1{
+  width: 50px;
+  height: 20px;
+  color: white;
+  background-color: rgb(50, 148, 255);
+  padding: 30px;
+  cursor: pointer;
+  transition: 0.2s;
+};

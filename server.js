@@ -7,6 +7,7 @@ var SerialPort = require('serialport'),
     serialPort = new SerialPort('/dev/ttyS0', {
         baudRate: 19200
     }),
+
     Printer = require('thermalprinter');
 var printerReady = false;
 var printer;
@@ -20,7 +21,6 @@ serialPort.on('open',function() {
 });
 
 // SEND server
-
 var app = express();
 
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
@@ -29,13 +29,10 @@ app.use(bodyParser.json({ limit: "50mb", extended: true }));
 console.log("online");
 
 var server = app.listen(3000);
-
 app.use(express.static("webpage"));
 
 app.post("/basic_post_action/", post_action);
 app.get("/basic_get_action/:param1/:param2", get_action);
-
-
 
 function post_action(req, res) {
   console.log("post action");
@@ -46,13 +43,11 @@ function post_action(req, res) {
   if(data.label == 0) {
     getJoke();
   } else if (data.label == 1){
-
-    getWord();
-
+    getMeteo();
+    //getWord();
   } else if (data.label == 2){
-    console.log('sound2');
-    }
-
+    getHoroscope();
+  }
 
   // Sent back to computer as result
   res.send("thank you");
@@ -85,9 +80,8 @@ function getJoke() {
   });
 }
 
-
 function getWord() {
-  https.get('http://api.wordnik.com/v4/words.json/wordOfTheDay?api_key=55237b70fefb31e7f560a0dac07035bd0e47772c1322d6a84', (resp) => {
+  https.get('https://api.wordnik.com/v4/words.json/wordOfTheDay?api_key=55237b70fefb31e7f560a0dac07035bd0e47772c1322d6a84', (resp) => {
     let data = '';
     resp.on('data', (chunk) => {
       data += chunk;
@@ -107,6 +101,56 @@ function getWord() {
         console.log("not ready")
       }
 
+    });
+  }).on("error", (err) => {
+    console.log("Error: " + err.message);
+  });
+}
+
+function getHoroscope() {
+  https.get('https://horoscope-api.herokuapp.com/horoscope/today/Virgo', (resp) => {
+    let data = '';
+    resp.on('data', (chunk) => {
+      data += chunk;
+    });
+    resp.on('end', () => {
+      console.log(JSON.parse(this.responseText).horoscope);
+      if(printerReady) {
+        printer
+            .printLine(JSON.parse(this.responseText).horoscope)
+            .print(function() {
+                console.log('done');
+                process.exit();
+            });
+      }
+      else {
+        console.log("not ready")
+      }
+    });
+  }).on("error", (err) => {
+    console.log("Error: " + err.message);
+  });
+}
+
+function getMeteo() {
+  https.get('https://what-weather-dark-sky.glitch.me/api/46.519653/6.632273', (resp) => {
+    let data = '';
+    resp.on('data', (chunk) => {
+      data += chunk;
+    });
+    resp.on('end', () => {
+      console.log(JSON.parse(this.responseText).daily.summary);
+      if(printerReady) {
+        printer
+            .printLine(JSON.parse(this.responseText).daily.summary)
+            .print(function() {
+                console.log('done');
+                process.exit();
+            });
+      }
+      else {
+        console.log("not ready")
+      }
     });
   }).on("error", (err) => {
     console.log("Error: " + err.message);
