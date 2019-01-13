@@ -88,7 +88,7 @@ function getJoke() {
       console.log(JSON.parse(data));
       if(printerReady) {
         printer
-            .left(true)
+            .left()
             .printLine('JOKE OF THE DAY')
             .printLine(JSON.parse(data))
             .printLine('')
@@ -119,7 +119,7 @@ function getNews() {
       console.log(JSON.parse(this.responseText).totalResults);
       if(printerReady) {
         printer
-            .left(true)
+            .left()
             .printLine('News')
             .printLine(JSON.parse(this.responseText).totalResults)
             .printLine('')
