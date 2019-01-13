@@ -2,6 +2,11 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 
+//date et heure
+var date = (("0"+dt.getDate()).slice(-2)) +"."+ (("0"+(dt.getMonth()+1)).slice(-2)) +"."+ (dt.getFullYear());
+var time =(("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2));
+
+
 const https = require('https');
 var SerialPort = require('serialport'),
     serialPort = new SerialPort('/dev/ttyS0', {
