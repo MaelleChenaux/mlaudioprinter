@@ -265,19 +265,32 @@ function getNews() {
 getNews();
 
 
-function getWord() {
-  https.get('http://api.wordnik.com/v4/words.json/wordOfTheDay?api_key=55237b70fefb31e7f560a0dac07035bd0e47772c1322d6a84', (resp) => {
-    let data = '';
-    resp.on('data', (chunk) => {
-      data += chunk;
-    });
-    resp.on('end', () => {
-      console.log(JSON.parse(this.responseText).word);
-      console.log(JSON.parse(this.responseText).word);
-    });
-  }).on("error", (err) => {
-    console.log("Error: " + err.message);
-  });
-}
+// WORDOFTHEDAY
+// function getWord() {
+//   https.get('https://api.wordnik.com/v4/words.json/wordOfTheDay?api_key=55237b70fefb31e7f560a0dac07035bd0e47772c1322d6a84', (resp) => {
+//     let data = '';
+//     resp.on('data', (chunk) => {
+//       data += chunk;
+//     });
+//     resp.on('end', () => {
+//       console.log(JSON.parse(this.responseText).word);
+//       //printer.queue (JSON.parse(data));
+//       if(printerReady) {
+//         printer
+//             .printLine(JSON.parse(this.responseText).word)
+//             .print(function() {
+//                 console.log('done');
+//                 process.exit();
+//             });
+//       }
+//       else {
+//         console.log("not ready")
+//       }
+//
+//     });
+//   }).on("error", (err) => {
+//     console.log("Error: " + err.message);
+//   });
+// }
 getWord();
 */

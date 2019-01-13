@@ -16,6 +16,20 @@ serialPort.on('open',function() {
     printer.on('ready', function() {
       console.log("printerReady");
       printerReady = true;
+      printer
+          .center(true)
+          .horizontalLine(16)
+          .bold(true)
+          .printLine('GOOD MORNING')
+          .bold(false)
+          .inverse(true)
+          .big(true)
+          .printLine('Le quotidien')
+          .big(false)
+          .inverse(false)
+          .horizontalLine(16)
+          .printLine(date)
+          .printLine(time)
     });
 });
 
@@ -27,7 +41,6 @@ app.use(bodyParser.json({ limit: "50mb", extended: true }));
 console.log("online");
 
 //Mot de bienvenue
-
 
 var server = app.listen(3000);
 app.use(express.static("webpage"));
@@ -54,6 +67,9 @@ function post_action(req, res) {
   res.send("thank you");
 }
 
+
+
+// JOKE
 function getJoke() {
   https.get('https://geek-jokes.sameerkumar.website/api', (resp) => {
     let data = '';
@@ -64,6 +80,11 @@ function getJoke() {
       console.log(JSON.parse(data));
       if(printerReady) {
         printer
+            .center(true)
+            .big(true)
+            .printLine('Joke of the day')
+            .center(false)
+            .big(false)
             .printLine(JSON.parse(data))
             .print(function() {
                 console.log('done');
@@ -80,6 +101,8 @@ function getJoke() {
   });
 }
 
+
+// NEWS
 function getNews() {
   https.get('https://newsapi.org/v2/top-headlines?sources=google-news-fr&apiKey=eb40180347c54e3a9ba51a1327ab80d8', (resp) => {
     let data = '';
@@ -88,39 +111,30 @@ function getNews() {
     });
     resp.on('end', () => {
       console.log(JSON.parse(this.responseText).articles[1].description);
+      if(printerReady) {
+        printer
+            .center(true)
+            .big(true)
+            .printLine('What is the weather today ?')
+            .big(false)
+            .center(false)
+            .printLine(JSON.parse(data))
+            .print(function() {
+                console.log('done');
+                //process.exit();
+            });
+      }
+      else {
+        console.log("not ready")
+      }
     });
   }).on("error", (err) => {
     console.log("Error: " + err.message);
   });
 }
 
-// function getWord() {
-//   https.get('https://api.wordnik.com/v4/words.json/wordOfTheDay?api_key=55237b70fefb31e7f560a0dac07035bd0e47772c1322d6a84', (resp) => {
-//     let data = '';
-//     resp.on('data', (chunk) => {
-//       data += chunk;
-//     });
-//     resp.on('end', () => {
-//       console.log(JSON.parse(this.responseText).word);
-//       //printer.queue (JSON.parse(data));
-//       if(printerReady) {
-//         printer
-//             .printLine(JSON.parse(this.responseText).word)
-//             .print(function() {
-//                 console.log('done');
-//                 process.exit();
-//             });
-//       }
-//       else {
-//         console.log("not ready")
-//       }
-//
-//     });
-//   }).on("error", (err) => {
-//     console.log("Error: " + err.message);
-//   });
-// }
 
+// HOROSCOPE
 function getHoroscope() {
   https.get('https://horoscope-api.herokuapp.com/horoscope/today/Virgo', (resp) => {
     let data = '';
@@ -146,6 +160,8 @@ function getHoroscope() {
   });
 }
 
+
+//METEO
 function getMeteo() {
   https.get('https://what-weather-dark-sky.glitch.me/api/46.519653/6.632273', (resp) => {
     let data = '';

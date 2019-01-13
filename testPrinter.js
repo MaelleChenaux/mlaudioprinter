@@ -17,7 +17,7 @@ serialPort.on('open',function() {
     printer.on('ready', function() {
       console.log("printing");
         printer
-        .center()
+        .center(true)
         .horizontalLine(16)
         .bold(true)
         .printLine('GOOD MORNING')
@@ -25,10 +25,12 @@ serialPort.on('open',function() {
         .inverse(true)
         .big(true)
         .printLine('Le quotidien')
-        .horizontalLine(16)
         .big(false)
         .inverse(false)
+        .horizontalLine(16)
         .printLine(date)
+        .printLine(time)
+
 
             .print(function() {
                 console.log('done');
