@@ -11,10 +11,9 @@ serialPort.on('open',function() {
     printer.on('ready', function() {
       console.log("printing");
         printer
-        .indent(10)
         .horizontalLine(10)
         .bold(true)
-        .indent(10)
+        .underline()
         .printLine('GOOD MORNING')
         .bold(false)
         .inverse(true)
