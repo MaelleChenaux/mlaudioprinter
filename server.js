@@ -89,7 +89,6 @@ function getJoke() {
       if(printerReady) {
         printer
             .left(true)
-            .medium(true)
             .printLine('JOKE OF THE DAY')
             .printLine(JSON.parse(data))
             .printLine('')
@@ -121,9 +120,10 @@ function getNews() {
       if(printerReady) {
         printer
             .left(true)
-            .small(true)
             .printLine('News')
             .printLine(JSON.parse(this.responseText).totalResults)
+            .printLine('')
+            .printLine('')
             .print(function() {
                 console.log('done');
                 //process.exit();
@@ -150,10 +150,11 @@ function getHoroscope() {
       console.log(JSON.parse(this.responseText).horoscope);
       if(printerReady) {
         printer
+            .printLine('Horoscope')
             .printLine(JSON.parse(this.responseText).horoscope)
             .print(function() {
                 console.log('done');
-                process.exit();
+                //process.exit();
             });
       }
       else {
@@ -177,10 +178,11 @@ function getMeteo() {
       console.log(JSON.parse(this.responseText).latitude);
       if(printerReady) {
         printer
+            .printLine('WEATHER')
             .printLine(JSON.parse(this.responseText).latitude)
             .print(function() {
                 console.log('done');
-                process.exit();
+                //process.exit();
             });
       }
       else {
