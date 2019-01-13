@@ -12,13 +12,14 @@ serialPort.on('open',function() {
       console.log("printing");
         printer
         .indent(10)
-        .horizontalLine(16)
+        .horizontalLine(10)
         .bold(true)
-        .indent(15)
+        .indent(10)
         .printLine('GOOD MORNING')
         .bold(false)
         .inverse(true)
         .big(true)
+        .indient(0)
         .center()
         .printLine('Le quotidien')
             .print(function() {
