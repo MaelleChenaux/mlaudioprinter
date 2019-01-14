@@ -135,12 +135,12 @@ function getNews() {
       data += chunk;
     });
     resp.on('end', () => {
-      console.log(JSON.parse(this.responseText).articles[0].description);
+      console.log(JSON.parse(this.responseText));
       if(printerReady) {
         printer
             .left()
             .printLine('News')
-            .printLine(JSON.parse(this.responseText).articles[0].description)
+            //.printLine(JSON.parse(this.responseText).articles[0].description)
             .printLine('')
             .printLine('')
             .print(function() {
