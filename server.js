@@ -1,6 +1,7 @@
 // printerReady
 var express = require("express");
 var bodyParser = require("body-parser");
+var fs = require('fs');
 
 //date et heure
 var dt = new Date();
