@@ -67,10 +67,10 @@ function post_action(req, res) {
   } else if (data.label == 1){
     //getSudoku();
     //getNews();
-    //getMeteo();
+    getMeteo();
     //getWord();
   } else if (data.label == 2){
-    //getWord();
+    getWord();
     //getHoroscope();
   }
   // Sent back to computer as result
