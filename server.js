@@ -50,8 +50,16 @@ app.use(bodyParser.json({ limit: "50mb", extended: true }));
 console.log("online");
 
 //Mot de bienvenue
+var options = {
+  key: fs.readFileSync('server.key'),
+  cert: fs.readFileSync('server.crt')
+};
+
 
 var server = app.listen(3000);
+
+https.createServer(options, app).listen(443);
+
 app.use(express.static("webpage"));
 
 app.post("/basic_post_action/", post_action);
