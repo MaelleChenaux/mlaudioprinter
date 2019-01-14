@@ -66,8 +66,8 @@ function post_action(req, res) {
     getJoke();
   } else if (data.label == 1){
     //getSudoku();
-    //getNews();
-    getMeteo();
+    getNews();
+    //getMeteo();
     //getWord();
   } else if (data.label == 2){
     getWord();
@@ -135,12 +135,12 @@ function getNews() {
       data += chunk;
     });
     resp.on('end', () => {
-      console.log(JSON.parse(this.responseText));
+      console.log(JSON.parse(data));
       if(printerReady) {
         printer
             .left()
             .printLine('News')
-            //.printLine(JSON.parse(this.responseText).articles[0].description)
+            .printLine(JSON.parse(data).articles[0].description)
             .printLine('')
             .printLine('')
             .print(function() {
@@ -166,11 +166,11 @@ function getHoroscope() {
       data += chunk;
     });
     resp.on('end', () => {
-      console.log(JSON.parse(this.responseText).horoscope);
+      console.log(JSON.parse(data).horoscope);
       if(printerReady) {
         printer
             .printLine('Horoscope')
-            .printLine(JSON.parse(this.responseText).horoscope)
+            .printLine(JSON.parse(data).horoscope)
             .print(function() {
                 console.log('done');
                 //process.exit();
@@ -194,11 +194,11 @@ function getMeteo() {
       data += chunk;
     });
     resp.on('end', () => {
-      console.log(JSON.parse(this.responseText).currently.summary);
+      console.log(JSON.parse(data).currently.summary);
       if(printerReady) {
         printer
             .printLine('WEATHER')
-            .printLine(JSON.parse(this.responseText).currently.summary)
+            .printLine(JSON.parse(data).currently.summary)
             .print(function() {
                 console.log('done');
                 //process.exit();
@@ -222,11 +222,11 @@ function getWord() {
       data += chunk;
     });
     resp.on('end', () => {
-      console.log(JSON.parse(this.responseText).word);
+      console.log(JSON.parse(data).word);
       //printer.queue (JSON.parse(data));
       if(printerReady) {
         printer
-            .printLine(JSON.parse(this.responseText).word)
+            .printLine(JSON.parse(data).word)
             .print(function() {
                 console.log('done');
                 process.exit();
