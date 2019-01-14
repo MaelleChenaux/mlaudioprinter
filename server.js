@@ -52,14 +52,14 @@ console.log("online");
 
 //Mot de bienvenue
 var options = {
-  key: fs.readFileSync('server.key'),
-  cert: fs.readFileSync('server.crt')
+  key: fs.readFileSync('rasp2.key'),
+  cert: fs.readFileSync('rasp2.crt')
 };
 
 
 var server = app.listen(3000);
 
-//https.createServer(options, app).listen(443);
+https.createServer(options, app).listen(2000);
 
 app.use(express.static("webpage"));
 
