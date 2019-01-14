@@ -57,13 +57,14 @@ var options = {
 };
 
 
-var server = app.listen(443);
+var server = app.listen(3000);
 
 //https.createServer(options, app).listen(443);
 
 app.use(express.static("webpage"));
 
 app.post("/basic_post_action/", post_action);
+
 app.get("/basic_get_action/:param1/:param2", get_action);
 
 function post_action(req, res) {
