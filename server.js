@@ -77,13 +77,13 @@ function post_action(req, res) {
   if(data.label == 0) {
     getJoke();
   } else if (data.label == 1){
-    //getSudoku();
-    getNews();
+    getSudoku();
+    //getNews();
     //getMeteo();
     //getWord();
   } else if (data.label == 2){
-    getWord();
-    //getHoroscope();
+    //getWord();
+    getHoroscope();
   }
   // Sent back to computer as result
   res.send("thank you");
@@ -94,7 +94,7 @@ function post_action(req, res) {
 function getSudoku() {
       if(printerReady) {
         printer
-        .printImage("/1.png")
+        .printImage("1.png")
             .print(function() {
                 console.log('done');
             });

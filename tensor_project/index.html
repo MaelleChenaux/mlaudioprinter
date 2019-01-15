@@ -10,66 +10,26 @@
 
   </head>
   <body>
+    <div class="container">
+      <p>Le Quotidien</p>
+    </div>
+
+
     <button id="sound1" ontouchstart="collect(0)" ontouchend="collect(null)" class='soundsbtn' >Sound 1</button>
     <button id="sound2" ontouchstart="collect(1)" ontouchend="collect(null)" class='soundsbtn' >Sound 2 </button>
     <button id="sound3" ontouchstart="collect(2)" ontouchend="collect(null)" class='soundsbtn' >Sound 3</button>
     <button id="noise" ontouchstart="collect(3)" ontouchend="collect(null)" class='soundsbtn'>Noise</button>
-
-
-  <!--  <button id="sound1" onmousedown=""="collect(0)" onmouseup="collect(null)" class='soundsbtn' >Sound 1</button>
-    <button id="sound2" onmousedown=""="collect(1)" onmouseup="collect(null)" class='soundsbtn' >Sound 2 </button>
-    <button id="sound3" onmousedown=""="collect(2)" onmouseup="collect(null)" class='soundsbtn' >Sound 3</button>
-    <button id="noise" onmousedown=""="collect(3)" onmouseup="collect(null)" class='soundsbtn'>Noise</button>-->
 
     <br/><br/>
     <button id="train" onclick="train()">Train</button>
     <br/><br/>
 
     <button id="listen" onclick="listen()">Listen</button>
+
     <input  type="range" id="output" min="0" max="10" step="0.1">
     <div id="console"></div>
 
-
-
-    <!-- Dropdown choices
-    <div class="container">
-      <p>Le Quotidien</p>
-    </div>
-
-    <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">Sound 1</button>
-
-       <div id="myDropdown" class="dropdown-content">
-         <a href="#meteo">Meteo</a>
-         <a onclick="getWord()" href="#WordOfTheDay">WordOfTheDay</a>
-         <a onclick="getJoke()" href="#Joke">Joke</a>
-         <a href="#News">News</a>
-         <a href="#Horoscope">Horoscope</a>
-      </div>
-     </div>
-
-      <div class="dropdown">
-        <button onclick="myFunction2()" class="dropbtn">Sound 2</button>
-       <div id="myDropdown2" class="dropdown-content">
-         <a href="#meteo">Meteo</a>
-         <a onclick="getWord()" href="#wordOfTheDay">WordOfTheDay</a>
-         <a onclick="getJoke()" href="#joke">Joke</a>
-         <a href="#news">News</a>
-         <a href="#horoscope">Horoscope</a>
-      </div>
-     </div>
-
-     <div class="dropdown">
-       <button onclick="myFunction3()" class="dropbtn">Sound 3</button>
-      <div id="myDropdown3" class="dropdown-content">
-        <a href="#meteo">Meteo</a>
-        <a onclick="getWord()" href="#wordOfTheDay">WordOfTheDay</a>
-        <a onclick="getJoke()" href="#joke">Joke</a>
-        <a href="#news">News</a>
-        <a href="#horoscope">Horoscope</a>
-     </div>
-    </div> -->
-
+    <button id="custom"  onclick="location.href='/indexCustom.html'">Custom </button>
 
     <script src="js/index.js"></script>
 

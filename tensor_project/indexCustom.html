@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="styleCustom.css" type="text/css" ></link>
+
+
+  </head>
+  <body>
+
+    <div class="container">
+      <p>Le Quotidien</p>
+    </div>
+
+    <div class="dropdown">
+        <button id="sound1" onclick="myFunction()" class="dropbtn">Sound 1</button>
+
+       <div id="myDropdown" class="dropdown-content">
+         <a href="#meteo">Meteo</a>
+         <a onclick="getWord()" href="#WordOfTheDay">WordOfTheDay</a>
+         <a onclick="getJoke()" href="#Joke">Joke</a>
+         <a href="#News">News</a>
+         <a href="#Horoscope">Horoscope</a>
+      </div>
+     </div>
+
+      <div class="dropdown">
+        <button id="sound2" onclick="myFunction2()" class="dropbtn">Sound 2</button>
+       <div id="myDropdown2" class="dropdown-content">
+         <a href="#meteo">Meteo</a>
+         <a onclick="getWord()" href="#wordOfTheDay">WordOfTheDay</a>
+         <a onclick="getJoke()" href="#joke">Joke</a>
+         <a href="#news">News</a>
+         <a href="#horoscope">Horoscope</a>
+      </div>
+     </div>
+
+     <div class="dropdown">
+       <button id="sound3" onclick="myFunction3()" class="dropbtn">Sound 3</button>
+      <div id="myDropdown3" class="dropdown-content">
+        <a href="#meteo">Meteo</a>
+        <a onclick="getWord()" href="#wordOfTheDay">WordOfTheDay</a>
+        <a onclick="getJoke()" href="#joke">Joke</a>
+        <a href="#news">News</a>
+        <a href="#horoscope">Horoscope</a>
+     </div>
+    </div>
+
+
+    <button id="save"  onclick="location.href='/index.html'">Save </button>
+
+    <script src="js/indexCustom.js"></script>
+
+
+
+  </body>
+</html>
