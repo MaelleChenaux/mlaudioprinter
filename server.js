@@ -50,21 +50,19 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(bodyParser.json({ limit: "50mb", extended: true }));
 console.log("online");
 
-//Mot de bienvenue
+
 var options = {
-  key: fs.readFileSync('rasp2.key'),
-  cert: fs.readFileSync('rasp2.crt')
+  key: fs.readFileSync('ssl/key.key'),
+  cert: fs.readFileSync('ssl/raspcert.cer')
 };
 
 
 var server = app.listen(3000);
-
-//https.createServer(options, app).listen(2000);
+https.createServer(options, app).listen(2000);
 
 app.use(express.static("webpage"));
 
 app.post("/basic_post_action/", post_action);
-
 app.get("/basic_get_action/:param1/:param2", get_action);
 
 function post_action(req, res) {

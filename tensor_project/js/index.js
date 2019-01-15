@@ -2,17 +2,16 @@ let recognizer;
 const NUM_FRAMES = 4;
 let examples = [];
 
-var PAGE_IP_ADDRESS = "10.192.164.21:3000";  //ECALEVENT
+var PAGE_IP_ADDRESS = "10.192.164.21:2000";  //ECALEVENT
 //var PAGE_IP_ADDRESS = "172.20.10.12:3000";  //HOTSPOT
 
 var counterLabel = 0;
 
- //var PAGE_IP_ADDRESS = "localhost:3000";
 function sendData(jsonData){
   let data_to_send = jsonData;
 
   $.post(
-    "http://" + PAGE_IP_ADDRESS + "/basic_post_action/",
+    "https://" + PAGE_IP_ADDRESS + "/basic_post_action/",
     data_to_send,
     post_done
   );
@@ -222,3 +221,32 @@ function listen() {
     }
   );
 }
+
+
+
+///Dropdown choices
+
+function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+function myFunction2() {
+        document.getElementById("myDropdown2").classList.toggle("show");
+    }
+
+function myFunction3() {
+        document.getElementById("myDropdown3").classList.toggle("show");
+    }
+
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+};
