@@ -94,7 +94,7 @@ function post_action(req, res) {
 function getSudoku() {
       if(printerReady) {
         printer
-        .printImage("1.png")
+        .printImage("2.png")
             .print(function() {
                 console.log('done');
             });
@@ -114,7 +114,9 @@ function getJoke() {
       if(printerReady) {
         printer
             .left()
+            .inverse(true)
             .printLine('JOKE OF THE DAY')
+            .inverse(false)
             .printLine(JSON.parse(data))
             .printLine('')
             .printLine('')
@@ -151,7 +153,9 @@ function getNews() {
       if(printerReady) {
         printer
             .left()
-            .printLine('News')
+            .inverse(true)
+            .printLine('NEWS')
+            .inverse(false)
             .printLine(JSON.parse(data).articles[0].description)
             .printLine('')
             .printLine('')
@@ -181,8 +185,13 @@ function getHoroscope() {
       console.log(JSON.parse(data).horoscope);
       if(printerReady) {
         printer
-            .printLine('Horoscope')
+            .left()
+            .inverse(true)
+            .printLine('HOROSCOPE')
+            .inverse(false)
             .printLine(JSON.parse(data).horoscope)
+            .printLine('')
+            .printLine('')
             .print(function() {
                 console.log('done');
                 //process.exit();
@@ -209,7 +218,10 @@ function getMeteo() {
       console.log(JSON.parse(data).currently.summary);
       if(printerReady) {
         printer
+            .left()
+            .inverse(true)
             .printLine('WEATHER')
+            .inverse(false)
             .printLine(JSON.parse(data).currently.summary)
             .print(function() {
                 console.log('done');
