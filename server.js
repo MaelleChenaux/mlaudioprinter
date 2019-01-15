@@ -94,7 +94,7 @@ function post_action(req, res) {
 function getSudoku() {
       if(printerReady) {
         printer
-        .printImage("2.png")
+        .printImage("3.png")
             .print(function() {
                 console.log('done');
             });
