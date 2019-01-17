@@ -27,6 +27,8 @@ function myFunction3() {
     }
 function sendSettings() {
   sendData({'label1': document.getElementById("myDropdown1").value, 'label2': document.getElementById("myDropdown2").value, 'label3': document.getElementById("myDropdown3").value});
+
+  
 }
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
