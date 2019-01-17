@@ -142,14 +142,14 @@ function getNews() {
       data += chunk;
     });
     resp.on('end', () => {
-      console.log(JSON.parse(data));
+      console.log(JSON.parse(data).articles[1].description);
       if(printerReady) {
         printer
             .left()
             .inverse(true)
             .printLine('NEWS')
             .inverse(false)
-            .printLine(JSON.parse(data).articles[0].description)
+            .printLine(JSON.parse(data).articles[1].description)
             .printLine('')
             .printLine('')
             .print(function() {
