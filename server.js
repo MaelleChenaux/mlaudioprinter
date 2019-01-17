@@ -77,9 +77,9 @@ function post_action(req, res) {
   if(data.label == 0) {
     getJoke();
   } else if (data.label == 1){
-    getSudoku();
+    //getSudoku();
     //getNews();
-    //getMeteo();
+    getMeteo();
     //getWord();
   } else if (data.label == 2){
     //getWord();
