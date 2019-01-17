@@ -112,16 +112,6 @@ function setParams(req, res) {
 }
 
 
-///SUDOKU
-function getSudoku() {
-      if(printerReady) {
-        printer
-        .printImage("3.png")
-            .print(function() {
-                console.log('done');
-            });
-      }
-    }
 
 
 // JOKE
@@ -270,7 +260,6 @@ function getWord() {
             .printLine(JSON.parse(data).word)
             .print(function() {
                 console.log('done');
-                process.exit();
             });
       }
       else {
