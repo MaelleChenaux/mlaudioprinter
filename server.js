@@ -43,6 +43,7 @@ serialPort.on('open',function() {
     });
 });
 
+var settings = [0, 1, 2];
 // SEND server
 var app = express();
 
@@ -67,6 +68,7 @@ app.use(function(req, res, next) {
 });
 
 app.post("/basic_post_action/", post_action);
+app.post("/setParams/", setParams);
 app.get("/basic_get_action/:param1/:param2", get_action);
 
 function post_action(req, res) {
@@ -74,17 +76,27 @@ function post_action(req, res) {
   let data = req.body;
   console.log("message recived: " + JSON.stringify(data));
 
-  if(data.label == 0) {
+  if(settings[data.label] == 0) {
     getMeteo();
-  } else if (data.label == 1){
+  } else if (settings[data.label] == 1){
     //getSudoku();
     getNews();
     //getWord();
-  } else if (data.label == 2){
+  } else if (settings[data.label] == 2){
     //getWord();
     //getJoke();
     getHoroscope();
   }
+  // Sent back to computer as result
+  res.send("thank you");
+}
+function setParams(req, res) {
+  console.log("post action");
+  let data = req.body;
+  console.log("message recived: " + JSON.stringify(data));
+  settings[0] = data.label0;
+  settings[1] = data.label1;
+  settings[2] = data.label2;
   // Sent back to computer as result
   res.send("thank you");
 }
