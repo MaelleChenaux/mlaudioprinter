@@ -1,3 +1,4 @@
+var PAGE_IP_ADDRESS = "10.192.164.21:2000";
 function sendData(jsonData){
   let data_to_send = jsonData;
 
@@ -26,9 +27,13 @@ function myFunction3() {
         document.getElementById("myDropdown3").classList.toggle("show");
     }
 function sendSettings() {
-  sendData({'label1': document.getElementById("myDropdown1").value, 'label2': document.getElementById("myDropdown2").value, 'label3': document.getElementById("myDropdown3").value});
+  sendData({
+    'label1': document.getElementById("myDropdown1").options[document.getElementById("myDropdown1").selectedIndex].value,
+    'label2': document.getElementById("myDropdown2").options[document.getElementById("myDropdown2").selectedIndex].value,
+    'label3': document.getElementById("myDropdown3").options[document.getElementById("myDropdown3").selectedIndex].value
+  });
 
-  
+
 }
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {

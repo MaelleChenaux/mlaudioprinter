@@ -75,7 +75,7 @@ function post_action(req, res) {
   console.log("post action");
   let data = req.body;
   console.log("message recived: " + JSON.stringify(data));
-
+  console.log(settings[data.label]);
   if(settings[data.label] == 0) {
     getMeteo();
   } else if (settings[data.label] == 1){
