@@ -75,18 +75,28 @@ function post_action(req, res) {
   console.log("post action");
   let data = req.body;
   console.log("message recived: " + JSON.stringify(data));
-  console.log(settings[data.label]);
+  console.log(data.label);
+
   if(settings[data.label] == 0) {
     getMeteo();
   } else if (settings[data.label] == 1){
     //getSudoku();
-    getNews();
-    //getWord();
+    //getNews();
+    getWord();
   } else if (settings[data.label] == 2){
     //getWord();
-    //getJoke();
+    getJoke();
+    //getHoroscope();
+  } else if (settings[data.label] == 3){
+    //getWord();
+    getNews();
+    //getHoroscope();
+  } else if (settings[data.label] == 4){
+    //getWord();
+    //getNews();
     getHoroscope();
   }
+
   // Sent back to computer as result
   res.send("thank you");
 }
@@ -154,14 +164,14 @@ function getNews() {
       data += chunk;
     });
     resp.on('end', () => {
-      console.log(JSON.parse(data).articles[1].description);
+      console.log(JSON.parse(data).articles[0].description);
       if(printerReady) {
         printer
             .left()
             .inverse(true)
             .printLine('NEWS')
             .inverse(false)
-            .printLine(JSON.parse(data).articles[1].description)
+            .printLine(JSON.parse(data).articles[0].description)
             .printLine('')
             .printLine('')
             .print(function() {

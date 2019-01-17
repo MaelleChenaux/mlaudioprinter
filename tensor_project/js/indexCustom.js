@@ -15,7 +15,7 @@ function sendData(jsonData){
   }
 }
 ///Dropdown choices
-
+/*
 function myFunction() {
         document.getElementById("myDropdown").classList.toggle("show");
     }
@@ -26,25 +26,28 @@ function myFunction2() {
 function myFunction3() {
         document.getElementById("myDropdown3").classList.toggle("show");
     }
+*/
+
 function sendSettings() {
   sendData({
-    'label1': document.getElementById("myDropdown1").options[document.getElementById("myDropdown1").selectedIndex].value,
-    'label2': document.getElementById("myDropdown2").options[document.getElementById("myDropdown2").selectedIndex].value,
-    'label3': document.getElementById("myDropdown3").options[document.getElementById("myDropdown3").selectedIndex].value
+    'label0': document.getElementById("sound1").options[document.getElementById("sound1").selectedIndex].value,
+    'label1': document.getElementById("sound2").options[document.getElementById("sound2").selectedIndex].value,
+    'label2': document.getElementById("sound3").options[document.getElementById("sound3").selectedIndex].value,
   });
 
-
 }
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
 
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-};
+
+// window.onclick = function(event) {
+//   if (!event.target.matches('.dropbtn')) {
+//
+//     var dropdowns = document.getElementsByClassName("dropdown-content");
+//     var i;
+//     for (i = 0; i < dropdowns.length; i++) {
+//       var openDropdown = dropdowns[i];
+//       if (openDropdown.classList.contains('show')) {
+//         openDropdown.classList.remove('show');
+//       }
+//     }
+//   }
+// };
