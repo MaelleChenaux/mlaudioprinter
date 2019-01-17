@@ -134,13 +134,6 @@ function getJoke() {
   });
 }
 
-///QUOTES
-/*
-$.getJSON("https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=", function(a) {
-  $("body").append(a[0].content + "<p>&mdash; " + a[0].title + "</p>")
-});
- */
-
 // NEWS
 function getNews() {
   https.get('https://newsapi.org/v2/top-headlines?sources=google-news-fr&apiKey=eb40180347c54e3a9ba51a1327ab80d8', (resp) => {
@@ -223,6 +216,8 @@ function getMeteo() {
             .printLine('WEATHER')
             .inverse(false)
             .printLine(JSON.parse(data).daily.summary)
+            .printLine('')
+            .printLine('')
             .print(function() {
                 console.log('done');
                 //process.exit();
