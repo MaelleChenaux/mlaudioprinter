@@ -49,7 +49,7 @@ p{
 
   .show {display:block;}
 
-  #sound1{
+  #sound1b{
     left: 15%;
     top: 20%;
   }
@@ -59,7 +59,7 @@ p{
     top: 25%;
   }
 
-  #sound2{
+  #sound2b{
     left: 55%;
     top: 20%;
   }
@@ -69,7 +69,7 @@ p{
     top: 25%;
   }
 
-  #sound3{
+  #sound3b{
     left: 15%;
     top: 35%;
   }
