@@ -75,14 +75,14 @@ function post_action(req, res) {
   console.log("message recived: " + JSON.stringify(data));
 
   if(data.label == 0) {
-    getJoke();
+    getMeteo();
   } else if (data.label == 1){
     //getSudoku();
-    //getNews();
-    getMeteo();
+    getNews();
     //getWord();
   } else if (data.label == 2){
     //getWord();
+    getJoke();
     getHoroscope();
   }
   // Sent back to computer as result
