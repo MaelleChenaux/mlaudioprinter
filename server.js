@@ -215,14 +215,14 @@ function getMeteo() {
       data += chunk;
     });
     resp.on('end', () => {
-      console.log(JSON.parse(data).currently.summary);
+      console.log(JSON.parse(data).daily.summary);
       if(printerReady) {
         printer
             .left()
             .inverse(true)
             .printLine('WEATHER')
             .inverse(false)
-            .printLine(JSON.parse(data).currently.summary)
+            .printLine(JSON.parse(data).daily.summary)
             .print(function() {
                 console.log('done');
                 //process.exit();
