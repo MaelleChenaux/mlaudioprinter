@@ -82,7 +82,7 @@ function post_action(req, res) {
     //getWord();
   } else if (data.label == 2){
     //getWord();
-    getJoke();
+    //getJoke();
     getHoroscope();
   }
   // Sent back to computer as result
