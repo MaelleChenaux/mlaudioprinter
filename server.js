@@ -53,8 +53,8 @@ console.log("online");
 
 
 var options = {
-  key: fs.readFileSync('ssl3/key.key'),
-  cert: fs.readFileSync('ssl3/raspcert.cer')
+  key: fs.readFileSync('ssl/key.key'),
+  cert: fs.readFileSync('ssl/raspcert.cer')
 };
 
 
