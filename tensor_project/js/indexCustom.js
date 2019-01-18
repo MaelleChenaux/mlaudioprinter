@@ -1,4 +1,5 @@
-var PAGE_IP_ADDRESS = "10.192.164.21:2000";
+// var PAGE_IP_ADDRESS = "10.192.164.21:2000";
+var PAGE_IP_ADDRESS = "172.20.10.12:2000";
 function sendData(jsonData){
   let data_to_send = jsonData;
 
