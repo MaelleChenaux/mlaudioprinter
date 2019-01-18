@@ -1,4 +1,4 @@
-p{
+ p{
   text-align: center;
   position: absolute;
   left: 30%;
@@ -9,7 +9,7 @@ p{
 
 }
 
-.custom-select {
+ .custom-select {
   position: absolute;
   width: 30%;
   font-family: Helvetica;
@@ -75,18 +75,17 @@ p{
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+#save{
+position: absolute;
+width: 20%;
+height: 7%;
+left: 40%;
+top: 80%;
 
-  #save{
-  position: absolute;
-  width: 20%;
-  height: 7%;
-  left: 40%;
-  top: 80%;
-
-  background: #FFFFFF;
-  border: 3px solid #ddd;
-  box-sizing: border-box;
-  border-radius: 50px;
-  font-size: 32px;
-  color: #ddd;
-  }
+background: #FFFFFF;
+border: 3px solid #ddd;
+box-sizing: border-box;
+border-radius: 50px;
+font-size: 32px;
+color: #ddd;
+}

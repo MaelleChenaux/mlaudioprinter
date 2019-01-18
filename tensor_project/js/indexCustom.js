@@ -98,3 +98,11 @@ function closeAllSelect(elmnt) {
 /* If the user clicks anywhere outside the select box,
 then close all select boxes: */
 document.addEventListener("click", closeAllSelect);
+
+
+let elSend = document.querySelector('#save');
+
+elSend.addEventListener('click', function() {
+  sendSettings();
+  location.href="/index.html";
+});
