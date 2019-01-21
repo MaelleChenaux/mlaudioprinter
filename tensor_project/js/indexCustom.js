@@ -1,11 +1,11 @@
-var PAGE_IP_ADDRESS = "10.192.164.21:2000";
+var PAGE_IP_ADDRESS = "10.192.164.21:3000";
 
 
 function sendDataComplete(jsonData, callback){
   let data_to_send = jsonData;
 
   $.post(
-    "https://" + PAGE_IP_ADDRESS + "/setParams/",
+    "http://" + PAGE_IP_ADDRESS + "/setParams/",
     data_to_send,
     callback
   );

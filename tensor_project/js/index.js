@@ -2,7 +2,7 @@ let recognizer;
 const NUM_FRAMES = 4;
 let examples = [];
 
-var PAGE_IP_ADDRESS = "10.192.164.21:2000";  //ECALEVENT
+var PAGE_IP_ADDRESS = "10.192.164.21:3000";  //ECALEVENT
 //var PAGE_IP_ADDRESS = "172.20.10.12:2000";  //HOTSPOT
 
 var counterLabel = 0;
@@ -11,7 +11,7 @@ function sendData(jsonData){
   let data_to_send = jsonData;
 
   $.post(
-    "https://" + PAGE_IP_ADDRESS + "/basic_post_action/",
+    "http://" + PAGE_IP_ADDRESS + "/basic_post_action/",
     data_to_send,
     post_done
   );
