@@ -148,7 +148,7 @@ function getJoke() {
 
 // NEWS
 function getNews() {
-  https.get('https://newsapi.org/v2/top-headlines?sources=google-news-fr&apiKey=eb40180347c54e3a9ba51a1327ab80d8', (resp) => {
+  https.get('https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=eb40180347c54e3a9ba51a1327ab80d8', (resp) => {
     let data = '';
     resp.on('data', (chunk) => {
       data += chunk;
