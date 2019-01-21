@@ -40,7 +40,7 @@ function collect(label) {
       } examples collected`;
     },
     {
-      overlapFactor: 0.500,
+      overlapFactor: 0.999,
       includeSpectrogram: true,
       invokeCallbackOnNoiseAndUnknown: true
     }
@@ -69,7 +69,7 @@ function predictWord() {
       document.querySelector("#console").textContent = scores[0].word;
     },
     {
-      probabilityThreshold: 0.8
+      probabilityThreshold: 0.75
     }
   );
 }
