@@ -40,7 +40,7 @@ function collect(label) {
       } examples collected`;
     },
     {
-      overlapFactor: 0.999,
+      overlapFactor: 0.500,
       includeSpectrogram: true,
       invokeCallbackOnNoiseAndUnknown: true
     }
