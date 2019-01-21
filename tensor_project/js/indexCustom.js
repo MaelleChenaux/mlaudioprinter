@@ -1,19 +1,23 @@
 var PAGE_IP_ADDRESS = "10.192.164.21:2000";
-//var PAGE_IP_ADDRESS = "172.20.10.12:2000";
-function sendData(jsonData){
+
+
+function sendDataComplete(jsonData, callback){
   let data_to_send = jsonData;
 
   $.post(
     "https://" + PAGE_IP_ADDRESS + "/setParams/",
     data_to_send,
-    post_done
+    callback
   );
+}
 
+function post_done(data, status) {
+  console.log(data);
+  console.log(status);
+}
 
-  function post_done(data, status) {
-    console.log(data);
-    console.log(status);
-  }
+function sendData(jsonData){
+  sendDataComplete(jsonData, post_done);
 }
 
 function sendSettings() {
@@ -104,6 +108,17 @@ document.addEventListener("click", closeAllSelect);
 let elSend = document.querySelector('#save');
 
 elSend.addEventListener('click', function() {
-  sendSettings();
-  location.href="/index.html";
+  var data = {
+    'label0': document.getElementById("sound1").options[document.getElementById("sound1").selectedIndex].value,
+    'label1': document.getElementById("sound2").options[document.getElementById("sound2").selectedIndex].value,
+    'label2': document.getElementById("sound3").options[document.getElementById("sound3").selectedIndex].value,
+  };
+
+  sendDataComplete(data, function(data, status) {
+    console.log("callback");
+    console.log(data);
+    console.log(status);
+    location.href="/index.html";
+  });
+
 });

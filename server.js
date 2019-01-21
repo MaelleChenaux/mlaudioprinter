@@ -254,12 +254,19 @@ function getWord() {
     });
     resp.on('end', () => {
       console.log(JSON.parse(data).word);
-      //printer.queue (JSON.parse(data));
       if(printerReady) {
         printer
+            .left()
+            .inverse(true)
+            .printLine('WORD OF THE DAY')
+            .inverse(false)
             .printLine(JSON.parse(data).word)
+            .printLine(JSON.parse(data).note)
+            .printLine('')
+            .printLine('')
             .print(function() {
                 console.log('done');
+
             });
       }
       else {
