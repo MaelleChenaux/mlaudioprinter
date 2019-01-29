@@ -1,36 +1,50 @@
 p{
+  margin: auto;
   text-align: center;
-  position: absolute;
-  left: 30%;
-  top: 5%;
+  width: 40%;
+  margin-top: 5vh;
   font-size: 64px ;
   font-family: helvetica;
   color:  #d9d9d9;
-
 }
 
 .soundsbtn{
+outline:0;
+margin: auto;
 position: absolute;
-width: 30%;
+width: 25%;
 height: 10%;
-
 background: #FFFFFF;
 border: 3px solid #FB710E;
 box-sizing: border-box;
 border-radius: 50px;
 font-size: 32px;
 color: #FB710E;
-
+/*
 -webkit-touch-callout: none;
   -webkit-user-select: none;
    -khtml-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
-          user-select: none;
+          user-select: none; */
+
+  animation-name: flash;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+
 }
 
+@keyframes flash {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1.0; }
+}
+
+
 #sound1{
-  left: 15%;
+  left: 20%;
   top: 20%;
 }
 
@@ -40,7 +54,7 @@ color: #FB710E;
 }
 
 #sound3{
-  left: 15%;
+  left: 20%;
   top: 35%;
 }
 
@@ -50,10 +64,11 @@ color: #FB710E;
 }
 
 #train{
+  outline:0;
   position: absolute;
-  width: 30%;
+  width: 25%;
   height: 10%;
-  left: 35%;
+  left: 37.5vw;
   top: 50%;
 
   background: #FFFFFF;
@@ -73,10 +88,11 @@ color: #FB710E;
 }
 
 #listen{
+outline:0;
 position: absolute;
-width: 30%;
+width: 25%;
 height: 10%;
-left: 35%;
+left: 37.5vw;
 top: 65%;
 
 background: #FFFFFF;
@@ -85,17 +101,18 @@ box-sizing: border-box;
 border-radius: 50px;
 font-size: 32px;
 color: #4ABD48;
-
+/*
 -webkit-touch-callout: none;
   -webkit-user-select: none;
    -khtml-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
-          user-select: none;
+          user-select: none; */
 
 }
 
 #custom{
+  outline:0;
 position: absolute;
 width: 20%;
 height: 7%;
@@ -109,20 +126,10 @@ border-radius: 50px;
 font-size: 32px;
 color: #ddd;
 
--webkit-touch-callout: none;
+/* -webkit-touch-callout: none;
   -webkit-user-select: none;
    -khtml-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
-          user-select: none;
-}
-
-#output{
-  left: 35%;
-  top: 70%;
-}
-
-#console{
-  left: 35%;
-  top: 75%;
+          user-select: none; */
 }

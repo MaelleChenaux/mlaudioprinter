@@ -118,7 +118,7 @@ elSend.addEventListener('click', function() {
     console.log("callback");
     console.log(data);
     console.log(status);
-    location.href="/index.html";
+    location.href="index.html";  ///// ./ ?
   });
 
 });

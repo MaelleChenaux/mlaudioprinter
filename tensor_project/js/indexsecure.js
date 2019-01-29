@@ -12,7 +12,7 @@ function sendData(jsonData){
   let data_to_send = jsonData;
 
   $.post(
-    "https://" + PAGE_IP_ADDRESS + "/basic_post_action/",
+    "http://" + PAGE_IP_ADDRESS + "/basic_post_action/",
     data_to_send,
     post_done
   );

@@ -22,10 +22,38 @@ function sendData(jsonData){
     console.log(status);
   }
 }
+//
+// var $element = $('#soundsbtn').bind('webkitAnimationEnd', function(){
+//     this.style.webkitAnimationName = '';
+// });
+//
+// $('#sound1').click(function(){
+//     $element.css('webkitAnimationName', 'flash');
+//     // you'll probably want to preventDefault here.
+// });
 
 
 function collect(label) {
-  if (label == null) {
+
+  if(label === 0){
+    $("#sound1")[0].style["animation-play-state"] = "running";
+  }
+  if(label === 1){
+    $("#sound2")[0].style["animation-play-state"] = "running";
+  }
+  if(label === 2){
+    $("#sound3")[0].style["animation-play-state"] = "running";
+  }
+  if(label === 3){
+    $("#noise")[0].style["animation-play-state"] = "running";
+  }
+
+
+  if (label === null) {
+    $("#sound1")[0].style["animation-play-state"] = "paused";
+    $("#sound2")[0].style["animation-play-state"] = "paused";
+    $("#sound3")[0].style["animation-play-state"] = "paused";
+    $("#noise")[0].style["animation-play-state"] = "paused";
     return recognizer.stopListening();
   }
   recognizer.listen(
@@ -38,6 +66,7 @@ function collect(label) {
       document.querySelector("#console").textContent = `${
         examples.length
       } examples collected`;
+      console.log(examples.length);
     },
     {
       overlapFactor: 0.999,
