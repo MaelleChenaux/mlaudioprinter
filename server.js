@@ -194,11 +194,14 @@ function getHoroscope() {
             .big(true)
             .printLine('Le quotidien')
             .big(false)
-            .printLine('A machine learning Project by Maelle Chenaux')
-            .printLine('done at ECAL with the')
-            .printLine('under the supervision of Gael Hugo')
+            .printLine('A machine learning Project')
+            .printLine('by Maelle Chenaux')
+            .printLine('done at ECAL')
+            .printLine('under supervision of Gael Hugo')
             .printLine('')
             .printLine('A machine learning printer using sound recognition')
+            .printLine('')
+            .printLine('')
             .printLine('')
 
             .print(function() {
