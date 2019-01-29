@@ -191,19 +191,12 @@ function getHoroscope() {
       if(printerReady) {
         printer
             .left()
-            .big(true)
-            .printLine('Le quotidien')
-            .big(false)
-            .printLine('A machine learning Project')
-            .printLine('by Maelle Chenaux')
-            .printLine('done at ECAL')
-            .printLine('under supervision of Gael Hugo')
-            .printLine('')
-            .printLine('A machine learning printer using sound recognition')
+            .inverse(true)
+            .printLine('HOROSCOPE')
+            .inverse(false)
+            .printLine(JSON.parse(data).horoscope)
             .printLine('')
             .printLine('')
-            .printLine('')
-
             .print(function() {
                 console.log('done');
                 //process.exit();
